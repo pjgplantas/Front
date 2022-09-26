@@ -1,76 +1,74 @@
 <template>
-  <div class="pageTotal">
-    <b-container fluid class="produto">
-      <b-row class="row">
-        <b-col class="col1">
-          <img
-            src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
-            alt=""
-          />
-        </b-col>
-        <b-col class="col2">
-          <h1><div class="nome">Nome do Produto</div></h1>
-          <br />
-          <br />
-          <h4>
-            <div class="descricao">
-              Produto de não sei oq la entendeu e simplesmente é isso. silencio
-              e trabalho, e não se esqueça... FORGET!
-            </div>
-          </h4>
-          <div class="subdescricao">
-            Por R$50,00 a vista <br />
-            ou 3x de R$ 19,50. <br />
-            <p></p>
-            Quantidade:
+  <b-container fluid class="produto">
+    <b-row class="row">
+      <b-col class="col1">
+        <img
+          src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
+          alt=""
+        />
+      </b-col>
+      <b-col class="col2">
+        <h1><div class="nome">Nome do Produto</div></h1>
+        <br />
+        <br />
+        <h4>
+          <div class="descricao">
+            Produto de não sei oq la entendeu e simplesmente é isso. silencio e
+            trabalho, e não se esqueça... FORGET!
           </div>
-          <div class="spinb">
-            <b-form-spinbutton
-              id="demo-sb"
-              v-model="value"
-              min="1"
-              max="10"
-              inline
-            ></b-form-spinbutton>
-          </div>
-          <div class="Total">
-            <h3>
-              TOTAL:<code class="value">R${{ value * 50 }},00 </code>
-            </h3>
-          </div>
-          <br />
-          <b-button class="btncad" type="submit" href="/dadoscompra"
-            >Finalizar</b-button
-          >
-        </b-col>
-      </b-row>
-      <div class="Comentarios">
-        <h1><div class="TituloComentario">Comentários</div></h1>
-        <div class="FazerComentario">
-          <b-form-textarea
-            class="TextoComentario"
-            id="textarea-formatter"
-            max-rows="5"
-            no-resize
-          >
-          </b-form-textarea>
-          <b-button class="BotaoComentario" type="submit">Comentar</b-button>
+        </h4>
+        <div class="subdescricao">
+          Por R$50,00 a vista <br />
+          ou 3x de R$ 19,50. <br />
+          <p></p>
+          Quantidade:
         </div>
-        <div
-          class="Respostas"
-          v-for="comentario in comentarios"
-          :key="comentario.id"
+        <div class="spinb">
+          <b-form-spinbutton
+            id="demo-sb"
+            v-model="value"
+            min="1"
+            max="10"
+            inline
+          ></b-form-spinbutton>
+        </div>
+        <div class="Total">
+          <h3>
+            TOTAL:<code class="value">R${{ value * 50 }},00 </code>
+          </h3>
+        </div>
+        <br />
+        <b-button class="btncad" type="submit" href="/dadoscompra"
+          >Finalizar</b-button
         >
-          <b-avatar icon="people-fill" size="4em"></b-avatar>
-          <div class="RespostasCliente">
-            <div class="aResposta">
-              {{ comentario.texto }}
-            </div>
+      </b-col>
+    </b-row>
+    <div class="Comentarios">
+      <h1><div class="TituloComentario">Comentários</div></h1>
+      <div class="FazerComentario">
+        <b-form-textarea
+          class="TextoComentario"
+          id="textarea-formatter"
+          max-rows="5"
+          no-resize
+        >
+        </b-form-textarea>
+        <b-button class="BotaoComentario" type="submit">Comentar</b-button>
+      </div>
+      <div class="Respostas">
+        <b-avatar icon="people-fill" size="4em"></b-avatar>
+        <div class="RespostasCliente">
+          <div
+            class="aResposta"
+            v-for="comentario in comentarios"
+            :key="comentario.id"
+          >
+            {{ comentario.texto }}
           </div>
         </div>
       </div>
-    </b-container>
-  </div>
+    </div>
+  </b-container>
 </template>
 
 <script>
@@ -97,15 +95,8 @@ export default {
 <style>
 .value {
   color: #000000;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
   font-style: initial;
-}
-
-.pageTotal {
-  background: #00bf8f;
-  background: -webkit-linear-gradient(to top, #001510, #00bf8f);
-  background: linear-gradient(to top, #038264, #00bf8f);
-  height: 1950px;
 }
 .row {
   background: #ffffff;
@@ -182,15 +173,14 @@ img {
 }
 .Comentarios {
   position: absolute;
-  width: 193vh;
-  height: 105vh;
+
   background: #ffffff;
   border-radius: 4px;
   margin: 1% 0% 0 0%;
 }
 .TituloComentario {
   font-family: "Jomolhari";
-  margin: 4% 0 0 5%;
+  margin: 10% 0 0 35%;
 }
 .FazerComentario {
   display: flex;
@@ -253,7 +243,7 @@ img {
 }
 
 .hrlay {
-  margin: 0 0 0 0;
+  margin: 50% 0 0 0;
 }
 #footer {
   margin: 5% 0 0 25%;

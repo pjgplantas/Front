@@ -86,6 +86,10 @@ import { mapActions, mapState } from "vuex";
 export default {
   methods: {
     ...mapActions("auth", ["logout"]),
+    handleClick() {
+      localStorage.removeItem("token");
+      this.$router.push("/login");
+    },
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user"]),

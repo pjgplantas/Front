@@ -46,15 +46,13 @@
       <b-col class="col2">
         <div class="subtitle">Dados de Compra</div>
         <div class="subsubtitle">Escolha a forma de pagamento</div>
-        <b-dropdown
-          id="dropdown-1"
-          text="Cartão de débito"
-          class="drop1 m-md-2"
-        >
-          <b-dropdown-item>Cartão de débito</b-dropdown-item>
-          <b-dropdown-item href="/pix">PIX</b-dropdown-item>
-          <b-dropdown-item href="/boleto">Boleto</b-dropdown-item>
-        </b-dropdown>
+        <b-form-select class="mb-3 drop1" aria-placeholder="Forma de Pagamento">
+          <b-form-select-option value="1"
+            >Cartão de Crédito</b-form-select-option
+          >
+          <b-form-select-option value="1">Pix</b-form-select-option>
+          <b-form-select-option value="1">Boleto</b-form-select-option>
+        </b-form-select>
         <div class="subsubtitle">Nome do titular</div>
         <div>
           <b-form-input placeholder="Digite o nome do titular"></b-form-input>
@@ -69,43 +67,31 @@
         </div>
         <div class="subsubtitle">Validade</div>
         <div>
-          <b-dropdown
-            id="dropdown-2"
-            text="Mês"
-            class="drop2 m-md-2"
-            v-model="mes"
-          >
-            <b-dropdown-item>Janeiro</b-dropdown-item>
-            <b-dropdown-item>Fevereiro</b-dropdown-item>
-            <b-dropdown-item>Março</b-dropdown-item>
-            <b-dropdown-item>Abril</b-dropdown-item>
-            <b-dropdown-item>Maio</b-dropdown-item>
-            <b-dropdown-item>Junho</b-dropdown-item>
-            <b-dropdown-item>Julho</b-dropdown-item>
-            <b-dropdown-item>Agosto</b-dropdown-item>
-            <b-dropdown-item>Setembro</b-dropdown-item>
-            <b-dropdown-item>Outubro</b-dropdown-item>
-            <b-dropdown-item>Novembro</b-dropdown-item>
-            <b-dropdown-item>Dezembro</b-dropdown-item>
-          </b-dropdown>
-          <b-dropdown
-            id="dropdown-3"
-            text="Ano"
-            class="drop3 m-md-2"
-            v-model="Ano"
-          >
-            <b-dropdown-item>2010</b-dropdown-item>
-            <b-dropdown-item>2011</b-dropdown-item>
-            <b-dropdown-item>2012</b-dropdown-item>
-            <b-dropdown-item>2013</b-dropdown-item>
-            <b-dropdown-item>2014</b-dropdown-item>
-            <b-dropdown-item>2015</b-dropdown-item>
-            <b-dropdown-item>2016</b-dropdown-item>
-            <b-dropdown-item>2017</b-dropdown-item>
-            <b-dropdown-item>2018</b-dropdown-item>
-            <b-dropdown-item>2019</b-dropdown-item>
-            <b-dropdown-item>2020</b-dropdown-item>
-          </b-dropdown>
+          <b-form-select class="mb-3 drop2">
+            <b-form-select-option value="1">Janeiro</b-form-select-option>
+            <b-form-select-option value="1">Fevereiro</b-form-select-option>
+            <b-form-select-option value="1">Março</b-form-select-option>
+            <b-form-select-option value="1">Abril</b-form-select-option>
+            <b-form-select-option value="1">Maio</b-form-select-option>
+            <b-form-select-option value="1">Junho</b-form-select-option>
+            <b-form-select-option value="1">Julho</b-form-select-option>
+            <b-form-select-option value="1">Agosto</b-form-select-option>
+            <b-form-select-option value="1">Setembro</b-form-select-option>
+            <b-form-select-option value="1">Outubro</b-form-select-option>
+            <b-form-select-option value="1">Novembro</b-form-select-option>
+            <b-form-select-option value="1">Dezembro</b-form-select-option>
+          </b-form-select>
+          <b-form-select class="mb-3 drop3">
+            <b-form-select-option value="1">2020</b-form-select-option>
+            <b-form-select-option value="1">2021</b-form-select-option>
+            <b-form-select-option value="1">2022</b-form-select-option>
+            <b-form-select-option value="1">2023</b-form-select-option>
+            <b-form-select-option value="1">2024</b-form-select-option>
+            <b-form-select-option value="1">2025</b-form-select-option>
+            <b-form-select-option value="1">2026</b-form-select-option>
+            <b-form-select-option value="1">2027</b-form-select-option>
+            <b-form-select-option value="1">2028</b-form-select-option>
+          </b-form-select>
         </div>
         <div class="imagens">
           <img
@@ -142,8 +128,6 @@ body {
   background-color: rgba(255, 255, 255, 0.95);
 }
 
-
-
 .row {
   margin-top: 4rem;
 }
@@ -168,6 +152,49 @@ body {
   line-height: 32px;
   padding: 15px;
   margin: 0 0 0 25%;
+}
+.drop1 {
+  background: rgb(23, 184, 144);
+  background: linear-gradient(
+    90deg,
+    rgba(23, 184, 144, 1) 0%,
+    rgba(1, 94, 57, 1) 100%
+  );
+  border: 0;
+  font-size: 19px;
+  color: white;
+  text-align: center;
+}
+.drop2,
+.drop3 {
+  background: rgb(23, 184, 144);
+  background: linear-gradient(
+    90deg,
+    rgba(23, 184, 144, 1) 0%,
+    rgba(1, 94, 57, 1) 100%
+  );
+  border: 0;
+  font-size: 17px;
+  text-align: center;
+  width: 110px;
+  margin: 10px;
+}
+.drop2::before {
+  background: rgb(23, 184, 144);
+  background: linear-gradient(
+    90deg,
+    rgba(23, 184, 144, 1) 0%,
+    rgba(1, 94, 57, 1) 100%
+  );
+}
+option {
+  color: #e6e6e6;
+  background: rgb(23, 184, 144);
+  background: linear-gradient(
+    90deg,
+    rgba(23, 184, 144, 1) 0%,
+    rgba(1, 94, 57, 1) 100%
+  );
 }
 .btn-secondary.dropdown-toggle {
   background: rgb(23, 184, 144);
@@ -202,7 +229,7 @@ body {
   border-color: rgba(62, 150, 97, 0.95);
   width: 400px;
 }
-.col1{
+.col1 {
   margin: 3% 0 0 0;
   display: grid;
 }
@@ -290,14 +317,14 @@ ul.dropdown-menu.show {
     margin: 0 10% 0 5%;
     flex-grow: 2;
   }
-  .row{
+  .row {
     margin-top: 0px;
   }
   .subtitle {
     text-align: center;
-    margin:0%;
+    margin: 0%;
   }
-  .subsubtitle{
+  .subsubtitle {
     width: 280px;
   }
   .button {
@@ -306,24 +333,24 @@ ul.dropdown-menu.show {
   .imagens {
     margin-bottom: 10%;
   }
-  .pdt{
+  .pdt {
     flex-direction: column;
     align-items: center;
     width: 280px;
     align-content: center;
     margin: 3% 0 0 11.5%;
   }
-  .imgplanta{
+  .imgplanta {
     margin: 10px;
   }
-  .container{
+  .container {
     padding: 10px;
   }
-  .form-control{
+  .form-control {
     width: 340px;
   }
-  .btn-group{
-    padding:5px ;
+  .btn-group {
+    padding: 5px;
   }
   #footer {
     margin: 0 0 0 5%;
@@ -337,6 +364,5 @@ ul.dropdown-menu.show {
     margin: 0 20% 0 0;
     text-align: center;
   }
-  
 }
 </style>
