@@ -51,18 +51,25 @@
           id="textarea-formatter"
           max-rows="5"
           no-resize
+          v-model="comentario.texto"
+          placeholder="Digite seu comentario"
         >
         </b-form-textarea>
-        <b-button class="BotaoComentario" type="submit">Comentar</b-button>
+        <b-button
+          class="BotaoComentario"
+          type="submit"
+          @click.prevent="postComentarios"
+          >Comentar</b-button
+        >
       </div>
       <div class="Respostas">
-        <b-avatar icon="people-fill" size="4em"></b-avatar>
         <div class="RespostasCliente">
           <div
             class="aResposta"
             v-for="comentario in comentarios"
             :key="comentario.id"
           >
+            {{ comentario.comentario2 }} :
             {{ comentario.texto }}
           </div>
         </div>
@@ -72,6 +79,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Comentarios",
   data() {
@@ -86,8 +94,14 @@ export default {
   },
   methods: {
     async getComentarios() {
-      this.plantas = await this.$get("comentarios/");
+      this.comentarios = await this.$get("comentarios/");
     },
+    async postComentarios() {
+      this.comentarios = await this.$post("comentarios/");
+    },
+  },
+  computed: {
+    ...mapState("auth", ["loggedIn", "user"]),
   },
 };
 </script>

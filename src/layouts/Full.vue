@@ -54,8 +54,10 @@
             </div>
           </b-nav-item-dropdown>
           <b-navbar-nav>
-            <b-nav-item v-if="!loggedIn" @click="logout">Sair</b-nav-item>
-            <b-nav-item v-else>{{ user.username }}</b-nav-item>
+            <b-nav-item v-if="!loggedIn">Sair</b-nav-item>
+            <b-nav-item v-else @click.prevent="logout"
+              >{{ user.username }}
+            </b-nav-item>
           </b-navbar-nav>
         </b-navbar-nav>
       </b-collapse>
@@ -86,10 +88,6 @@ import { mapActions, mapState } from "vuex";
 export default {
   methods: {
     ...mapActions("auth", ["logout"]),
-    handleClick() {
-      localStorage.removeItem("token");
-      this.$router.push("/login");
-    },
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user"]),
