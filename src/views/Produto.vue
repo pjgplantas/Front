@@ -107,6 +107,9 @@ export default {
 </script>
 
 <style>
+.dprincipal{
+  background-color: #fafdf9;
+}
 .value {
   color: #000000;
   font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
@@ -115,6 +118,8 @@ export default {
 .row {
   background: #ffffff;
   border-radius: 5px;
+  width: 85%;
+  margin-left: 7%;
 }
 .produto {
   padding: 30px;
@@ -124,6 +129,7 @@ export default {
   border-radius: 4px;
   padding: 1px;
   display: grid;
+  width: 50%;
 }
 .col2 {
   border-radius: 4px;
@@ -179,7 +185,7 @@ export default {
   color: white;
 }
 img {
-  height: 820px;
+  height: 85%;
   border-radius: 5px 0px 0px 5px;
 }
 .spinb {
@@ -187,14 +193,15 @@ img {
 }
 .Comentarios {
   position: absolute;
-
+  width: 82%;
   background: #ffffff;
   border-radius: 4px;
-  margin: 1% 0% 0 0%;
+  margin: 1%  7%;
 }
 .TituloComentario {
   font-family: "Jomolhari";
-  margin: 10% 0 0 35%;
+  text-align: center;
+  margin-top: 20px;
 }
 .FazerComentario {
   display: flex;
