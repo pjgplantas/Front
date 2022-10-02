@@ -42,6 +42,12 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/Boleto.vue"),
       },
+      {
+        path: "/perfil",
+        name: "/perfil",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/Perfil.vue"),
+      },
     ],
   },
   {

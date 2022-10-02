@@ -87,17 +87,21 @@ export default {
       value: 1,
       comentario: [],
       comentarios: {},
+      texto: {},
     };
   },
   async created() {
     this.getComentarios();
+  },
+  async posted() {
+    this.postComentarios();
   },
   methods: {
     async getComentarios() {
       this.comentarios = await this.$get("comentarios/");
     },
     async postComentarios() {
-      this.comentarios = await this.$post("comentarios/");
+      this.comentarios = await this.$post("comentarios/", this.user);
     },
   },
   computed: {
@@ -107,7 +111,7 @@ export default {
 </script>
 
 <style>
-.dprincipal{
+.dprincipal {
   background-color: #fafdf9;
 }
 .value {
@@ -196,7 +200,7 @@ img {
   width: 82%;
   background: #ffffff;
   border-radius: 4px;
-  margin: 1%  7%;
+  margin: 1% 7%;
 }
 .TituloComentario {
   font-family: "Jomolhari";

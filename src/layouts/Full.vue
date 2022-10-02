@@ -54,6 +54,9 @@
             </div>
           </b-nav-item-dropdown>
           <b-navbar-nav>
+            <b-nav-item href="/perfil">Perfil</b-nav-item>
+          </b-navbar-nav>
+          <b-navbar-nav>
             <b-nav-item v-if="!loggedIn">Sair</b-nav-item>
             <b-nav-item v-else @click.prevent="logout"
               >{{ user.username }}
