@@ -22,7 +22,6 @@
       <b-row>
         <b-col>
           <b-card
-            img-src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
             img-alt="Image"
             img-top
             tag="article"
@@ -31,6 +30,9 @@
             v-for="planta in plantas"
             :key="planta.id"
           >
+            <div>
+              {{ planta.imagem }}
+            </div>
             <hr class="hrH" />
             <div class="titulo5">{{ planta.nome }}</div>
             <b-card-text class="textop"> {{ planta.preco }} </b-card-text>

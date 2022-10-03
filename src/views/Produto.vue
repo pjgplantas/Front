@@ -8,7 +8,9 @@
         />
       </b-col>
       <b-col class="col2">
-        <h1><div class="nome">Nome do Produto</div></h1>
+        <h1>
+          <div class="nome">{{ planta.nome }}</div>
+        </h1>
         <br />
         <br />
         <h4>
@@ -33,8 +35,8 @@
           ></b-form-spinbutton>
         </div>
         <div class="Total">
-          <h3>
-            TOTAL:<code class="value">R${{ value * 50 }},00 </code>
+          <h3 v-for="planta in plantas" :key="planta.id">
+            TOTAL:<code class="value">{{ planta.preco }} </code>
           </h3>
         </div>
         <br />
@@ -88,6 +90,8 @@ export default {
       comentario: [],
       comentarios: {},
       texto: {},
+      planta: {},
+      plantas: [],
     };
   },
   async created() {
@@ -96,12 +100,18 @@ export default {
   async posted() {
     this.postComentarios();
   },
+  async planta() {
+    this.getPlanta();
+  },
   methods: {
     async getComentarios() {
       this.comentarios = await this.$get("comentarios/");
     },
     async postComentarios() {
       this.comentarios = await this.$post("comentarios/", this.user);
+    },
+    async getPlanta() {
+      this.plantas = await this.$get("plantas/");
     },
   },
   computed: {
