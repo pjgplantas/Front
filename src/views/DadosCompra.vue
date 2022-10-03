@@ -151,7 +151,7 @@ body {
   font-size: 24px;
   line-height: 32px;
   padding: 15px;
-  margin: 0 0 0 25%;
+  margin: 0% 0 0 25%;
 }
 .drop1 {
   background: rgb(23, 184, 144);
@@ -230,11 +230,11 @@ option {
   width: 400px;
 }
 .col1 {
-  margin: 3% 0 0 0;
+  margin: 0% 0 0 0;
   display: grid;
 }
 .col2 {
-  margin: 0 0 0 20%;
+  margin: 7px 0 0 20%;
   display: grid;
 }
 .imagens {
@@ -261,7 +261,7 @@ option {
   transition-duration: 0.3s;
   text-decoration: none;
   font-size: 20px;
-  margin: 1% 0 0 0%;
+  margin: 4% 0 0 2.5%;
   width: 190px;
   height: 50px;
 }

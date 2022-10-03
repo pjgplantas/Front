@@ -123,7 +123,7 @@ export default {
   color: -webkit-(to top, #001510, #00bf8f); /* Chrome 10-25, Safari 5.1-6 */
   color: #00bf8f; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-size: 25px;
-  margin: 5% 0 0 20%;
+  margin: 1% 0px 4% 20%;
 }
 #navb {
   font-size: 23px;

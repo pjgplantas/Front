@@ -97,16 +97,23 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+.imgperfil{
+  display:flex;
+  width: 150px;
+  margin-left:12%;
+}
+
 .formp {
   border-radius: 2px;
-  height: 98vh;
-  width: 173vh;
-  margin: 2% 0 0 5%;
+  height: 90vh;
+  width: 160vh;
+  margin-top: 2% ;
+  align-content: center;
   background-color: white;
   display: flex;
 }
 .login-page {
-  width: 1950px;
+  width: 1905px;
   height: 1000px;
   background: #00bf8f; /* fallback for old browsers */
   background: -webkit-(
@@ -123,17 +130,20 @@ export default {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-weight: 600;
-  margin: 0 0% 0 12%;
-}
+} 
 
 .EmailCliente {
   color: black;
   opacity: 50%;
   font-size: 19px;
+
+}
+.hr{
+  margin-top: 0%;
 }
 .HrForm {
   border: 1px solid #808080;
-  height: 88vh;
+  height: 80vh;
 }
 .parte2 {
   margin: 3% 0 0 17%;
@@ -178,6 +188,13 @@ export default {
 }
 
 @media (max-width: 844px) {
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0.2%;
+}
+
   .imgperfil {
     margin-left: 25%;
   }
@@ -191,7 +208,7 @@ export default {
     width: 370px;
     flex-direction: column;
     height: 1200px;
-    margin-left: 6%;
+    margin-left: 0.4%;
   }
   .parte1 {
     width: 300px;
