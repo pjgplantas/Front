@@ -71,7 +71,7 @@
             v-for="comentario in comentarios"
             :key="comentario.id"
           >
-            {{ comentario.comentario2 }} :
+            {{ comentario.comentario2.username }} :
             {{ comentario.texto }}
           </div>
         </div>
