@@ -49,6 +49,22 @@
                     required
                   ></b-form-input>
                 </b-form-group>
+                <div class="divs">Senha:</div>
+                <b-form-group id="input-group-2">
+                  <b-form-input
+                    id="input-2"
+                    v-model="form.password"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+                <div class="divs">Confirmar Senha:</div>
+                <b-form-group id="input-group-2">
+                  <b-form-input
+                    id="input-2"
+                    v-model="form.password_confirmation"
+                    required
+                  ></b-form-input>
+                </b-form-group>
                 <b-button
                   class="btnperfil"
                   type="submit"
@@ -75,6 +91,8 @@ export default {
         username: "",
         last_name: "",
         first_name: "",
+        password: "",
+        password_confirmation: "",
       },
       show: true,
     };
@@ -97,17 +115,17 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-.imgperfil{
-  display:flex;
+.imgperfil {
+  display: flex;
   width: 150px;
-  margin-left:12%;
+  margin-left: 12%;
 }
 
 .formp {
   border-radius: 2px;
   height: 90vh;
   width: 160vh;
-  margin-top: 2% ;
+  margin-top: 2%;
   align-content: center;
   background-color: white;
   display: flex;
@@ -130,15 +148,14 @@ export default {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-weight: 600;
-} 
+}
 
 .EmailCliente {
   color: black;
   opacity: 50%;
   font-size: 19px;
-
 }
-.hr{
+.hr {
   margin-top: 0%;
 }
 .HrForm {
@@ -149,11 +166,11 @@ export default {
   margin: 3% 0 0 17%;
 }
 .parte3 {
-  margin: 5% 0 0 10%;
+  margin: 1% 0 0 10%;
 }
 .TituloPerfil {
   font-family: "Roboto", sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: black;
   padding: 0px;
   text-align: center;
@@ -188,12 +205,11 @@ export default {
 }
 
 @media (max-width: 844px) {
-
   .row {
     display: flex;
     flex-wrap: wrap;
     margin-left: 0.2%;
-}
+  }
 
   .imgperfil {
     margin-left: 25%;
