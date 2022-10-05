@@ -147,7 +147,7 @@ export default {
 .logo img {
   width: 400px;
   height: 400px;
-  margin: 3% 0% 12vh 22vh;
+  margin: 3% 0% 12vh 21vh;
 }
 .logo {
   margin: 5% 0% 0% 55%;
@@ -302,10 +302,7 @@ a:hover {
     margin: -32% -8% 0 -3px;
     padding: 50px;
   }
-  .form-control {
-    margin: 3% 5% 0 0%;
-    padding: 1px;
-  }
+
 
   .titulo {
     margin: 15% 0 0 20%;
