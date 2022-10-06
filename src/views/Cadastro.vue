@@ -119,7 +119,7 @@ export default {
       form: {
         email: "",
         password: "",
-        usuario: {},
+        usuario: "",
       },
       show: true,
     };
@@ -302,7 +302,6 @@ a:hover {
     margin: -32% -8% 0 -3px;
     padding: 50px;
   }
-
 
   .titulo {
     margin: 15% 0 0 20%;
