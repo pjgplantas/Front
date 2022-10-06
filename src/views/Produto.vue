@@ -15,12 +15,11 @@
         <br />
         <h4>
           <div class="descricao">
-            Produto de não sei oq la entendeu e simplesmente é isso. silencio e
-            trabalho, e não se esqueça... FORGET!
+            {{ planta.desc }}
           </div>
         </h4>
         <div class="subdescricao">
-          Por R$50,00 a vista <br />
+          Por R${{ planta.preco }} a vista <br />
           ou 3x de R$ 19,50. <br />
           <p></p>
           Quantidade:
@@ -87,7 +86,7 @@ export default {
   data() {
     return {
       value: 1,
-      // 
+      //
       comentario: {
         planta: 1,
         usuario: 2,
@@ -95,17 +94,13 @@ export default {
       },
       texto: {},
       planta: {},
-      plantas: [],
     };
   },
   async created() {
-    this.getComentarios();
-  },
-  async posted() {
-    this.postComentarios();
-  },
-  async planta() {
-    this.getPlanta();
+    await this.getComentarios();
+    console.log("oioioiio");
+    console.log(this.$route.params.id);
+    await this.getPlanta(this.$route.params.id);
   },
   methods: {
     async getComentarios() {
@@ -114,8 +109,10 @@ export default {
     async postComentarios() {
       this.comentarios = await this.$post("comentarios/", this.comentario);
     },
-    async getPlanta() {
-      this.plantas = await this.$get("plantas/:id/");
+    async getPlanta(id) {
+      const res = await this.$get(`plantas/${id}/`);
+      console.log(res);
+      this.planta = res;
     },
   },
   computed: {

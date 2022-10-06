@@ -36,7 +36,10 @@
             <hr class="hrH" />
             <div class="titulo5">{{ planta.nome }}</div>
             <b-card-text class="textop"> {{ planta.preco }} </b-card-text>
-            <b-button class="btn1" href="/produto" variant="primary"
+            <b-button
+              class="btn1"
+              :to="getPlantaUrl(planta.id)"
+              variant="primary"
               >Adicionar ao Carrinho</b-button
             >
           </b-card>
@@ -67,6 +70,9 @@ export default {
   methods: {
     async getPlanta() {
       this.plantas = await this.$get("plantas/");
+    },
+    getPlantaUrl(id) {
+      return `/produto/${id}`;
     },
   },
 };
