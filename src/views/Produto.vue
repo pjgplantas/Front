@@ -71,7 +71,7 @@
             v-for="comentario in comentarios"
             :key="comentario.id"
           >
-            {{ comentario.comentario2.username }} :
+            {{ comentario.usuario.username }} :
             {{ comentario.texto }}
           </div>
         </div>
@@ -87,8 +87,12 @@ export default {
   data() {
     return {
       value: 1,
-      comentario: [],
-      comentarios: {},
+      // 
+      comentario: {
+        planta: 1,
+        usuario: 2,
+        texto: "",
+      },
       texto: {},
       planta: {},
       plantas: [],
@@ -108,10 +112,10 @@ export default {
       this.comentarios = await this.$get("comentarios/");
     },
     async postComentarios() {
-      this.comentarios = await this.$post("comentarios/", this.user);
+      this.comentarios = await this.$post("comentarios/", this.comentario);
     },
     async getPlanta() {
-      this.plantas = await this.$get("plantas/");
+      this.plantas = await this.$get("plantas/:id/");
     },
   },
   computed: {
