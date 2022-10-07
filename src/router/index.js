@@ -43,7 +43,7 @@ const routes = [
           import(/* webpackChunkName: "about" */ "../views/Boleto.vue"),
       },
       {
-        path: "/perfil",
+        path: "/perfil/:id",
         name: "/perfil",
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/Perfil.vue"),

@@ -59,7 +59,7 @@
         <b-button
           class="BotaoComentario"
           type="submit"
-          @click.prevent="postComentarios"
+          v-on:click.prevent="postComentarios"
           >Comentar</b-button
         >
       </div>
@@ -88,8 +88,8 @@ export default {
       value: 1,
       //
       comentario: {
-        planta: 1,
-        usuario: 2,
+        planta: 0,
+        usuario: 0,
         texto: "",
       },
       texto: {},
@@ -97,23 +97,30 @@ export default {
     };
   },
   async created() {
-    await this.getComentarios();
+    await this.getComentarios(this.$route.params.id);
+    await this.postComentarios(this.$route.params.id);
     console.log("oioioiio");
     console.log(this.$route.params.id);
     await this.getPlanta(this.$route.params.id);
   },
   methods: {
-    async getComentarios() {
-      this.comentarios = await this.$get("comentarios/");
+    async getComentarios(id) {
+      const res = await this.$get(`comentarios/${id}/`);
+      this.comentario = res;
     },
-    async postComentarios() {
-      this.comentarios = await this.$post("comentarios/", this.comentario);
+    async postComentarios(id) {
+      if (this.comentario.texto.trim() === "") {
+        return;
+      }
+      this.comentario.usuario = this.$route.params.id;
+      await this.$post(`comentarios/${id}/`, this.comentario);
+      await this.getComentarios();
     },
-    async getPlanta(id) {
-      const res = await this.$get(`plantas/${id}/`);
-      console.log(res);
-      this.planta = res;
-    },
+  },
+  async getPlanta(id) {
+    const res = await this.$get(`plantas/${id}/`);
+    console.log(res);
+    this.planta = res;
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user"]),

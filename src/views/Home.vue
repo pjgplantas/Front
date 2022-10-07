@@ -56,7 +56,7 @@ import { mapState } from "vuex";
 export default {
   name: "Planta",
   computed: {
-    ...mapState("auth", ["loggedIn"]),
+    ...mapState("auth", ["loggedIn", "user", "id"]),
   },
   data() {
     return {

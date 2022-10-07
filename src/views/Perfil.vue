@@ -97,7 +97,17 @@ export default {
       show: true,
     };
   },
+  async created() {
+    console.log("oioioiio");
+    console.log(this.$route.params.id);
+    await this.getPerfil(this.$route.params.id);
+  },
   methods: {
+    async getPerfil(id) {
+      const res = await this.$get(`auth/${id}/`);
+      console.log(res);
+      this.form = res;
+    },
     async editarPerfil() {
       try {
         await this.$put("auth/", this.form);
@@ -107,7 +117,7 @@ export default {
     },
   },
   computed: {
-    ...mapState("auth", ["loggedIn", "user"]),
+    ...mapState("auth", ["loggedIn", "user", "id"]),
   },
 };
 </script>
