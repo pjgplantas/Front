@@ -312,10 +312,11 @@ ul.dropdown-menu.show {
   .col1 {
     flex-grow: 1;
     width: 280px;
+    margin: 0 0% 0 5%;
   }
   .col2 {
-    margin: 0 3% 0 5%;
-    flex-grow: 2;
+    margin: 7px 0 0 8%;
+    display: grid;
   }
   .row {
     display: flex;
@@ -325,7 +326,7 @@ ul.dropdown-menu.show {
   }
   .subtitle {
     text-align: center;
-    margin: 0%;
+    margin: 0% 0 0 -7%;
   }
   .subsubtitle {
     width: 280px;
@@ -350,7 +351,7 @@ ul.dropdown-menu.show {
     padding: 10px;
   }
   .form-control {
-    width: 340px;
+    width: 310px;
   }
   .btn-group {
     padding: 5px;
@@ -365,7 +366,6 @@ ul.dropdown-menu.show {
     text-align: center;
   }
   .footer2 {
-    margin: 0 20% 0 0;
     text-align: center;
   }
   .drop2{
@@ -373,6 +373,9 @@ ul.dropdown-menu.show {
   }
   .imagens img{
     padding: 5px;
+  }
+  .drop1{
+    width: 310px;
   }
 }
 
