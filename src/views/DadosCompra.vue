@@ -155,11 +155,7 @@ body {
 }
 .drop1 {
   background: rgb(23, 184, 144);
-  background: linear-gradient(
-    90deg,
-    rgba(23, 184, 144, 1) 0%,
-    rgba(1, 94, 57, 1) 100%
-  );
+  background: #0d9f7a;
   border: 0;
   font-size: 19px;
   color: white;
@@ -167,34 +163,18 @@ body {
 }
 .drop2,
 .drop3 {
-  background: rgb(23, 184, 144);
-  background: linear-gradient(
-    90deg,
-    rgba(23, 184, 144, 1) 0%,
-    rgba(1, 94, 57, 1) 100%
-  );
+  background: #0d9f7a;
+  color: white;
   border: 0;
   font-size: 17px;
   text-align: center;
   width: 110px;
   margin: 10px;
 }
-.drop2::before {
-  background: rgb(23, 184, 144);
-  background: linear-gradient(
-    90deg,
-    rgba(23, 184, 144, 1) 0%,
-    rgba(1, 94, 57, 1) 100%
-  );
-}
+
 option {
-  color: #e6e6e6;
-  background: rgb(23, 184, 144);
-  background: linear-gradient(
-    90deg,
-    rgba(23, 184, 144, 1) 0%,
-    rgba(1, 94, 57, 1) 100%
-  );
+  color: white;
+  background: #0d9f7a;
 }
 .btn-secondary.dropdown-toggle {
   background: rgb(23, 184, 144);
@@ -332,7 +312,7 @@ ul.dropdown-menu.show {
     width: 280px;
   }
   .button {
-    margin: 2% 0 10% 30%;
+    margin: 0 0 10% 30%;
   }
   .imagens {
     margin-bottom: 10%;
