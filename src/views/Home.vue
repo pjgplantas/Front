@@ -218,11 +218,24 @@ a.btn.btn1.btn-primary:hover {
   }
   .col {
     padding: 20px;
-    margin: 0px 8% -5px -50px;
+    justify-content: space-between;
   }
   .card {
     margin-left: 50px;
     width: 270px;
+  }
+  #footer {
+    margin: 0 0 0 0;
+    display: flex;
+    justify-content: center;
+  }
+  .footer1 {
+    text-align: center;
+  }
+  .footer2 {
+    text-align: center;
+    width: 150px;
+    padding: 5%;
   }
 }
 </style>

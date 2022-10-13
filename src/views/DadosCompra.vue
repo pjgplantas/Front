@@ -347,6 +347,9 @@ ul.dropdown-menu.show {
   }
   .footer2 {
     text-align: center;
+    margin: 0% 22% 0 22%;
+    width: 150px;
+    padding: 5%;
   }
   .drop2{
     margin-left: 2px;
