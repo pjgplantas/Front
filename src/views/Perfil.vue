@@ -13,7 +13,9 @@
                     src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
                   />
                 </div>
-                <div class="NomeCliente">{{ user.username }}</div>
+                <div class="NomeCliente">
+                  {{ user.username }} -- {{ user.id }}
+                </div>
                 <div class="EmailCliente">{{ user.email }}</div>
               </div>
               <div class="parte2"><hr class="HrForm" /></div>
@@ -28,7 +30,6 @@
                 <b-form-group id="input-group-2">
                   <b-form-input
                     id="input-2"
-                    type="name"
                     v-model="form.last_name"
                     required
                   ></b-form-input>
@@ -69,7 +70,7 @@
                   class="btnperfil"
                   type="submit"
                   @click.prevent="editarPerfil"
-                  >Salvar perfil</b-button
+                  >Alterar perfil</b-button
                 >
               </div>
             </b-form>
@@ -98,26 +99,23 @@ export default {
     };
   },
   async created() {
-    console.log("oioioiio");
-    console.log(this.$route.params.id);
-    await this.getPerfil(this.$route.params.id);
+    await this.getPerfil();
   },
   methods: {
-    async getPerfil(id) {
-      const res = await this.$get(`auth/${id}/`);
-      console.log(res);
-      this.form = res;
+    async getPerfil() {
+      const data = await this.$get(`/auth/${this.user.id}/`);
+      this.form = data;
     },
     async editarPerfil() {
       try {
-        await this.$put("auth/", this.form);
+        await this.$put(`/auth/${this.user.id}/`, this.form);
       } catch {
         alert("Erro");
       }
     },
   },
   computed: {
-    ...mapState("auth", ["loggedIn", "user", "id"]),
+    ...mapState("auth", ["loggedIn", "user"]),
   },
 };
 </script>
@@ -149,7 +147,6 @@ export default {
     #001510,
     #00bf8f
   ); /* Chrome 10-25, Safari 5.1-6 */
-  
 }
 .parte1 {
   margin: 1% 0 0 13%;

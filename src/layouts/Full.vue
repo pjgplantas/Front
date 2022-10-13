@@ -54,7 +54,7 @@
             </div>
           </b-nav-item-dropdown>
           <b-navbar-nav>
-            <b-nav-item :to="getPerfilUrl(form.id)">Perfil</b-nav-item>
+            <b-nav-item to="/perfil">Perfil</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav>
             <b-nav-item v-if="!loggedIn">Sair</b-nav-item>
@@ -66,15 +66,15 @@
       </b-collapse>
     </b-navbar>
     <router-view />
-  
-  <hr class="hrlay" />
-  <b-container id="footer" class="bv-example-row">
-    <b-row>
+
+    <hr class="hrlay" />
+    <b-container id="footer" class="bv-example-row">
+      <b-row>
         <b-col class="footer1">
           2021 Pjg Pagamentos S.A - Instituição de Pagamento. -
           12.345.678/0001-01 <br />
           BR-280 - Colégio Agrícola, Araquari - SC, 89245-000</b-col
-          >
+        >
         <b-col class="footer2">
           Fale com a gente. <br />
           <br />
@@ -85,8 +85,6 @@
       </b-row>
     </b-container>
   </div>
-  
-
 </template>
 
 <script>
@@ -131,7 +129,6 @@ export default {
   margin: 5% 0 0 0;
   border-color: #00bf8f;
 }
-
 
 .navpr {
   height: 75px;
