@@ -134,7 +134,7 @@ export default {
 .formp {
   border-radius: 2px;
   height: 90vh;
-  width: 160vh;
+  width: 150vh;
   margin-top: 2%;
   align-content: center;
   background-color: white;
@@ -143,17 +143,24 @@ export default {
 .login-page {
   width: 1905px;
   height: 1000px;
-  background: #00bf8f; /* fallback for old browsers */
+  background: #09b388; /* fallback for old browsers */
   background: -webkit-(
     to top,
     #001510,
     #00bf8f
   ); /* Chrome 10-25, Safari 5.1-6 */
-  background: #00bf8f; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 }
 .parte1 {
   margin: 1% 0 0 13%;
+  flex-grow: 1;
 }
+.parte3 {
+  margin: 4% 4% 4% 5%;
+  flex-grow: 1;
+  width: 20%;
+}
+
 .NomeCliente {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
@@ -170,14 +177,9 @@ export default {
 }
 .HrForm {
   border: 1px solid #808080;
-  height: 80vh;
+  height: 86vh;
 }
-.parte2 {
-  margin: 3% 0 0 17%;
-}
-.parte3 {
-  margin: 1% 0 0 10%;
-}
+
 .TituloPerfil {
   font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
@@ -191,7 +193,7 @@ export default {
   font-weight: 500;
   white-space: nowrap;
   font-size: 19px;
-  margin: 10% 0 0 0;
+  margin: 5% 0 0 0;
 }
 .form-control {
   background: white;
@@ -211,7 +213,7 @@ export default {
   width: 150px;
   font-size: 23px;
   border-radius: 10px;
-  margin: 10% 0 0 32%;
+  margin: 5% 0 0 25%;
 }
 
 @media (max-width: 844px) {
