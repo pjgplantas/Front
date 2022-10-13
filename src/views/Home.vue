@@ -234,8 +234,9 @@ a.btn.btn1.btn-primary:hover {
   }
   .footer2 {
     text-align: center;
+    margin: 0% 22% 0 22%;
     width: 150px;
     padding: 5%;
-  }
+}
 }
 </style>
