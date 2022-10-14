@@ -83,26 +83,26 @@ export default {
   data() {
     return {
       value: 1,
-      comentarios: [],
       comentario: {
-        planta: 0,
-        usuario: ``,
         texto: "",
+        usuario: 0,
+        planta: 0,
       },
-      texto: {},
       planta: {},
-      user: {}
     };
   },
+  async created() {
+    await this.getComentarios();
+  },
   methods: {
-    async getAllComentarios(id) {
-      await this.$get(`comentarios/planta/${id}/`, this.comentario.planta);
+    async getComentarios() {
+      const data = await this.$get(`/comentarios/`);
+      this.comentario = data;
     },
     async postComentarios() {
-      this.comentario.usuario = this.user;
-      this.comentario.planta = this.$route.params.id;
-      await this.$post("comentarios/", this.comentario);
-      await this.getAllComentarios();
+      this.comentario.usuario = this.user.id;
+      this.comentario.planta = this.planta.id;
+      await this.$post(`/comentarios/`, this.comentario);
     },
   },
   async getPlanta(id) {
