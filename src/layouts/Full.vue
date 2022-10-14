@@ -275,5 +275,17 @@ ul.dropdown-menu.show {
     background-color: #47ac5b;
     border: 1px solid transparent;
   }
+  .navbar-nav {
+    background-color: #00bf8f;
+    padding-left: 0vh;
+    margin: -3px 0px 0px 0px;
+  }
+  .nav-link {
+    background-color: #00bf8f;
+    margin: 0px -30px 0px -30px;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+  color: #ffffff;
+  }
 }
 </style>
