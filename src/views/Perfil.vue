@@ -108,7 +108,7 @@ export default {
     },
     async editarPerfil() {
       try {
-        await this.$put(`/auth/${this.user.id}/`, this.form);
+        await this.$p(`/auth/${this.user.id}/`, this.form);
       } catch {
         alert("Erro");
       }
