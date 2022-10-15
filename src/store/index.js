@@ -8,7 +8,6 @@ Vue.use(Vuex);
 const store = {
   state: {
     token: "",
-    id: 0,
   }
 }
 

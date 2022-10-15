@@ -52,11 +52,10 @@
 <script>
 // import axios from "axios";
 import { mapState } from "vuex";
-
 export default {
   name: "Planta",
   computed: {
-    ...mapState("auth", ["loggedIn", "user", "id"]),
+    ...mapState("auth", ["loggedIn"]),
   },
   data() {
     return {
@@ -82,7 +81,6 @@ export default {
 .col {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
 }
 .container {
@@ -100,7 +98,6 @@ a.btn.btn1.btn-primary {
   font-weight: bold;
   white-space: nowrap;
 }
-
 a.btn.btn1.btn-primary:hover {
   background: #328051a1;
 }
@@ -115,7 +112,6 @@ a.btn.btn1.btn-primary:hover {
   margin-right: 25px;
   margin: 25px;
 }
-
 .card-img-top {
   height: 300px;
   width: 300px;
@@ -142,7 +138,6 @@ a.btn.btn1.btn-primary:hover {
   font-style: normal;
   font-weight: 400;
 }
-
 .titlepl2 {
   margin: 5% 0 0 22%;
   font-size: 29px;
@@ -186,7 +181,6 @@ a.btn.btn1.btn-primary:hover {
   .navpr {
     box-shadow: none;
   }
-
   .navbar-nav {
     margin-right: 100px;
   }
@@ -218,25 +212,11 @@ a.btn.btn1.btn-primary:hover {
   }
   .col {
     padding: 20px;
-    justify-content: space-between;
+    margin: 0px 8% -5px -50px;
   }
   .card {
     margin-left: 50px;
     width: 270px;
   }
-  #footer {
-    margin: 0 0 0 0;
-    display: flex;
-    justify-content: center;
-  }
-  .footer1 {
-    text-align: center;
-  }
-  .footer2 {
-    text-align: center;
-    margin: 0% 22% 0 22%;
-    width: 150px;
-    padding: 5%;
-}
 }
 </style>

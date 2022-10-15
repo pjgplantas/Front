@@ -9,14 +9,6 @@
           <b-navbar-nav>
             <b-nav-item href="/">Home</b-nav-item>
           </b-navbar-nav>
-          <b-nav-item-dropdown class="drop" text="Produtos" right>
-            <b-dropdown-item href="#" class="drop1"
-              >Plantas de Áreas Externas</b-dropdown-item
-            >
-            <b-dropdown-item href="#" class="drop2"
-              >Plantas de Sombras
-            </b-dropdown-item>
-          </b-nav-item-dropdown>
           <b-nav-item-dropdown class="Carrinho" text="Carrinho">
             <img
               src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
@@ -244,11 +236,6 @@ ul.dropdown-menu.show {
   opacity: 80%;
   color: white;
 }
-.hrc {
-  border: #099d78 1px solid;
-  width: 23vh;
-  margin: 0;
-}
 @media (max-width: 844px) {
 }
 
@@ -285,7 +272,7 @@ ul.dropdown-menu.show {
     margin: 0px -30px 0px -30px;
   }
   .navbar-dark .navbar-nav .nav-link {
-  color: #ffffff;
+    color: #ffffff;
   }
 }
 </style>
