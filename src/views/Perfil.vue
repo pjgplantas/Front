@@ -14,7 +14,7 @@
                   />
                 </div>
                 <div class="NomeCliente">
-                  {{ user.username }} -- {{ user.id }}
+                  {{ user.username }} -- {{ user.last_name }}
                 </div>
                 <div class="EmailCliente">{{ user.email }}</div>
               </div>
@@ -99,23 +99,24 @@ export default {
     };
   },
   async created() {
+    console.log(this.user.id);
     await this.getPerfil();
   },
   methods: {
     async getPerfil() {
-      const data = await this.$get(`/auth/${this.user.id}/`);
+      const data = await this.$get(`/auth/${this.user.last_name}/`);
       this.form = data;
     },
     async editarPerfil() {
       try {
-        await this.$p(`/auth/${this.user.id}/`, this.form);
+        await this.$put(`/auth/${this.user.id}/`, this.form);
       } catch {
         alert("Erro");
       }
     },
   },
   computed: {
-    ...mapState("auth", ["loggedIn", "user"]),
+    ...mapState("auth", ["loggedIn", "user", "id"]),
   },
 };
 </script>

@@ -79,9 +79,9 @@ export default {
       value: 1,
       //
       comentario: {
-        planta: 0,
-        usuario: 0,
         texto: "",
+        usuario: 0,
+        planta: 0,
       },
       planta: {},
       texto: {},
@@ -91,6 +91,8 @@ export default {
     await this.getComentarios();
     console.log("oioioiio");
     console.log(this.$route.params.id);
+    console.log(this.user.id);
+    console.log(this.getPerfil);
     await this.getPlanta(this.$route.params.id);
   },
   methods: {
@@ -98,7 +100,12 @@ export default {
       this.comentarios = await this.$get("comentarios/");
     },
     async postComentarios() {
-      this.comentarios = await this.$post("comentarios/", this.comentario);
+      this.comentario.usuario = this.user.last_name;
+      this.comentario.planta = this.planta.id;
+      this.comentarios = await this.$post(
+        "/comentarios/planta/",
+        this.comentario
+      );
     },
     async getPlanta(id) {
       const res = await this.$get(`plantas/${id}/`);
@@ -107,7 +114,7 @@ export default {
     },
   },
   computed: {
-    ...mapState("auth", ["loggedIn", "user"]),
+    ...mapState("auth", ["loggedIn", "user", "id"]),
   },
 };
 </script>

@@ -4,7 +4,7 @@ export const auth ={
     namespaced: true,
     state: () => ({
         loggedIn: false,
-        user: {}
+        user: {},
     }),
     mutations: {
         setLoginInfo(state, user){

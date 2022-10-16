@@ -82,32 +82,11 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
-  name: "perfil",
   data() {
-    return {
-      form: {
-        email: "",
-        username: "",
-        last_name: "",
-        first_name: "",
-        password: "",
-        password_confirmation: "",
-      },
-      show: true,
-    };
-  },
-  async created() {
-    this.getPerfil();
+    return {};
   },
   methods: {
     ...mapActions("auth", ["logout"]),
-
-    async getPerfil() {
-      this.form = await this.$get("auth/");
-    },
-    getPerfilUrl(id) {
-      return `/perfil/${id}`;
-    },
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user", "id"]),
