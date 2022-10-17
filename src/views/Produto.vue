@@ -100,12 +100,10 @@ export default {
       this.comentarios = await this.$get("comentarios/");
     },
     async postComentarios() {
-      this.comentario.usuario = this.user.last_name;
+      this.comentario.usuario = this.user.id;
       this.comentario.planta = this.planta.id;
-      this.comentarios = await this.$post(
-        "/comentarios/planta/",
-        this.comentario
-      );
+      this.comentarios = await this.$post("comentarios/", this.comentario);
+      await this.getComentarios();
     },
     async getPlanta(id) {
       const res = await this.$get(`plantas/${id}/`);

@@ -14,7 +14,7 @@
                   />
                 </div>
                 <div class="NomeCliente">
-                  {{ user.username }} -- {{ user.last_name }}
+                  {{ user.username }} -- {{ user.id }}
                 </div>
                 <div class="EmailCliente">{{ user.email }}</div>
               </div>
@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     async getPerfil() {
-      const data = await this.$get(`/auth/${this.user.last_name}/`);
+      const data = await this.$get(`/auth/${this.user.id}/`);
       this.form = data;
     },
     async editarPerfil() {
