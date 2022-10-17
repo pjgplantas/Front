@@ -30,9 +30,7 @@
             v-for="planta in plantas"
             :key="planta.id"
           >
-            <div>
-              {{ planta.imagem }}
-            </div>
+            <img :src="planta.imagem.url" class="imghome" />
             <hr class="hrH" />
             <div class="titulo5">{{ planta.nome }}</div>
             <b-card-text class="textop"> {{ planta.preco }} </b-card-text>
@@ -103,6 +101,9 @@ a.btn.btn1.btn-primary:hover {
 }
 .imgpr {
   width: 300px;
+  height: 300px;
+}
+.imghome {
   height: 300px;
 }
 .card {

@@ -2,10 +2,7 @@
   <b-container fluid class="produto">
     <b-row class="row">
       <b-col class="col1">
-        <img
-          src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
-          alt=""
-        />
+        <img :src="planta.imagem.url" alt="" />
       </b-col>
       <b-col class="col2">
         <h1 id="h1Nome">
