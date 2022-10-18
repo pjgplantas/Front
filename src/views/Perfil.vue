@@ -80,10 +80,6 @@ export default {
       show: true,
     };
   },
-  async created() {
-    console.log(this.user.id);
-    await this.getPerfil();
-  },
   methods: {
     async editarPerfil() {
       try {
