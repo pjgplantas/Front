@@ -57,10 +57,10 @@
       </div>
       <div
         class="Respostas"
-        v-for="comentario in comentarios"
+        v-for="comentario in planta.comentarios"
         :key="comentario.id"
       >
-        {{ comentario.usuario.username }} :
+        {{ comentario.usuario }} :
         {{ comentario.texto }}
       </div>
     </div>
@@ -104,7 +104,6 @@ export default {
     },
     async getPlanta(id) {
       const res = await this.$get(`plantas/${id}/`);
-      console.log(res);
       this.planta = res;
     },
   },

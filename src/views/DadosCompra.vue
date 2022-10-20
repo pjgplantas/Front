@@ -139,9 +139,8 @@ body {
   font-size: 26px;
   line-height: 40px;
   color: #067c5f;
-  padding: 5px;
+  padding: 3px;
   text-align: center;
-  margin: 30px;
   text-transform: uppercase;
 }
 .subtitle {
@@ -150,7 +149,7 @@ body {
   font-weight: 300;
   font-size: 24px;
   line-height: 32px;
-  padding: 15px;
+  padding: 10px;
   margin: 0% 0 0 25%;
 }
 .drop1 {
@@ -351,15 +350,14 @@ ul.dropdown-menu.show {
     width: 150px;
     padding: 5%;
   }
-  .drop2{
+  .drop2 {
     margin-left: 2px;
   }
-  .imagens img{
+  .imagens img {
     padding: 5px;
   }
-  .drop1{
+  .drop1 {
     width: 310px;
   }
 }
-
 </style>
