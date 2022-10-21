@@ -34,12 +34,18 @@
             <hr class="hrH" />
             <div class="titulo5">{{ planta.nome }}</div>
             <b-card-text class="textop"> {{ planta.preco }} </b-card-text>
-            <b-button
-              class="btn1"
-              :to="getPlantaUrl(planta.id)"
-              variant="primary"
-              >Adicionar ao Carrinho</b-button
-            >
+            <div class="buttons">
+              <b-button
+                class="btn1"
+                :to="getPlantaUrl(planta.id)"
+                variant="primary"
+                >Ir para a planta</b-button
+              >
+              <b-button class="btn2">
+                <b-icon icon="cart2" class="b-0"></b-icon>
+                ></b-button
+              >
+            </div>
           </b-card>
         </b-col>
       </b-row>
@@ -84,12 +90,29 @@ export default {
 .container {
   padding-top: 50px;
 }
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 a.btn.btn1.btn-primary {
   background: #15d5a5;
   background: linear-gradient(7deg, #1d583b 0%, #41a17b 66%);
   border-radius: 5px;
   border: 0;
   padding: 10px;
+  font-size: 17px;
+  margin: 10% 0 0 0%;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.btn2 {
+  background: #15d5a5;
+  background: linear-gradient(7deg, #1d583b 0%, #41a17b 66%);
+  border-radius: 5px;
+  border: 0;
+  padding: 15px;
   font-size: 17px;
   margin: 10% 0 0 5%;
   font-family: "Roboto", sans-serif;
