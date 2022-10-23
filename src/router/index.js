@@ -31,12 +31,6 @@ const routes = [
           import(/* webpackChunkName: "about" */ "../views/DadosCompra.vue"),
       },
       {
-        path: "/pix",
-        name: "/pix",
-        component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Pix.vue"),
-      },
-      {
         path: "/boleto",
         name: "/boleto",
         component: () =>

@@ -55,68 +55,90 @@
         <div class="subtitle">Dados de Compra</div>
         <div class="subsubtitle">Escolha a forma de pagamento</div>
         <b-form-select class="mb-3 drop1" aria-placeholder="Forma de Pagamento">
-          <b-form-select-option
-            value="cartão"
-            v-model="pedido.cartao"
-            @click="cartão = !cartão"
-            >Cartão de Crédito</b-form-select-option
-          >
+          <b-form-select-option value="cartão" @click="clicar">
+            Cartão de Débito
+          </b-form-select-option>
           <b-form-select-option v-model="pedido.pix" value="pix"
             >Pix</b-form-select-option
           >
-          <b-form-select-option v-model="pedido.boleto1" value="boleto"
+          <b-form-select-option v-model="pedido.boleto" value="boleto"
             >Boleto</b-form-select-option
           >
         </b-form-select>
-        <div class="subsubtitle" v-if="cartão">Numero do Cartão</div>
-        <div>
+        <div v-if="cartão == true">
+          <div class="subsubtitle">Numero do Cartão</div>
+          <div>
+            <b-form-input
+              placeholder="Digite o numero do cartão"
+              v-model="cartao.numero"
+            ></b-form-input>
+          </div>
+          <div class="subsubtitle">CVV</div>
+          <div>
+            <b-form-input
+              type="number"
+              placeholder="Digite o CVV"
+              maxlength="3"
+              minlength="3"
+              v-model="cartao.cvv"
+            ></b-form-input>
+          </div>
+          <div class="subsubtitle">Validade</div>
           <b-form-input
-            v-if="cartão"
-            placeholder="Digite o numero do cartão"
-            v-model="cartao.numero"
+            placeholder="Digite a validade Ex: 12/29"
+            v-model="cartao.validade"
+            maxlength="5"
           ></b-form-input>
+          <div class="subsubtitle">Nome do titular</div>
+          <div>
+            <b-form-input
+              v-model="cartao.nometitular"
+              placeholder="Digite o nome do titular"
+            ></b-form-input>
+          </div>
+          <br />
+          <div class="imagens">
+            <img
+              src="../assets/images/cartao/1200px-Hipercard_logo 1.png"
+              alt=""
+            />
+            <img src="../assets/images/cartao/nu-icon 1.png" alt="" />
+            <img src="../assets/images/cartao/2018.01.25-13.39 1.png" alt="" />
+            <img src="../assets/images/cartao/MBR1uLe0_400x400 1.png" alt="" />
+            <img src="../assets/images/cartao/unnamed 1.png" alt="" />
+            <img src="../assets/images/cartao/1200x600wa 1.png" alt="" />
+          </div>
+          <b-button class="buttoncartao" @click="postCartao"
+            >Adicionar cartão</b-button
+          >
         </div>
-        <div class="subsubtitle" v-if="cartão">CVV</div>
-        <div>
-          <b-form-input
-            v-if="cartão"
-            type="number"
-            placeholder="Digite o CVV"
-            maxlength="3"
-            minlength="3"
-            v-model="cartao.cvv"
-          ></b-form-input>
+        <div class="boleto" v-if="boleto == true">
+          <img src="../assets/images/Boleto.jpg" alt="" />
+          <a @click="exportToPDF" class="imprimirBoleto" id="boleto">
+            Clique aqui para imprimir o boleto</a
+          >
+          <div class="v-line"></div>
+          <hr />
+          <h3 class="finalizar">Finalize o pagamento usando o Boleto!</h3>
         </div>
-        <div class="subsubtitle" v-if="cartão">Validade</div>
-        <b-form-input
-          v-if="cartão"
-          placeholder="Digite a validade Ex: 12/29"
-          v-model="cartao.validade"
-          maxlength="5"
-        ></b-form-input>
-        <div class="subsubtitle" v-if="cartão">Nome do titular</div>
-        <div>
-          <b-form-input
-            v-if="cartão"
-            v-model="cartao.nometitular"
-            placeholder="Digite o nome do titular"
-          ></b-form-input>
+        <div class="pix" v-if="pix == true">
+          <h4>Finalize o pagamento usando o Pix!</h4>
+          <hr />
+          <div class="qrcode">
+            <img src="../assets/images/qrcode.jpg" alt="" />
+            <h5>
+              Você pode utilizar a câmera do seu celular para ler o
+              <b>
+                QR Code <br />
+                ou copiar o código
+              </b>
+              e pagar no aplicativo de seu banco:
+            </h5>
+          </div>
+          <b-form-textarea id="textarea" plaintext :value="text">
+          </b-form-textarea>
+          <br />
         </div>
-        <br />
-        <div class="imagens" v-if="cartão">
-          <img
-            src="../assets/images/cartao/1200px-Hipercard_logo 1.png"
-            alt=""
-          />
-          <img src="../assets/images/cartao/nu-icon 1.png" alt="" />
-          <img src="../assets/images/cartao/2018.01.25-13.39 1.png" alt="" />
-          <img src="../assets/images/cartao/MBR1uLe0_400x400 1.png" alt="" />
-          <img src="../assets/images/cartao/unnamed 1.png" alt="" />
-          <img src="../assets/images/cartao/1200x600wa 1.png" alt="" />
-        </div>
-        <b-button class="buttoncartao" @click="postCartao"
-          >Adicionar cartão</b-button
-        >
       </b-col>
       <b-button class="button">FINALIZAR</b-button>
     </b-row>
@@ -125,11 +147,16 @@
 
 <script>
 import { mapState } from "vuex";
+import html2pdf from "html2pdf.js";
 export default {
   name: "cartaos",
   data() {
     return {
-      cartão: true,
+      cartão: false,
+      boleto: true,
+      pix: false,
+      text: "00020126330014br.gov.bcb.pix0111133136789125204000053039865802BR5925Carlos Henrique De Fraga 6009Sao Paulo62070503***630442E4",
+
       cartao: {
         numero: "",
         cvv: "",
@@ -155,6 +182,15 @@ export default {
       this.cartao.usuario = this.user.id;
       this.cartaos = await this.$post("cartaos/", this.cartao);
       alert("Cartão adicionado");
+    },
+    clicar() {
+      this.data.cartão = !this.data.cartão;
+    },
+    exportToPDF() {
+      html2pdf(document.getElementById("boleto"), {
+        margin: 1,
+        filename: "boleto.pdf",
+      });
     },
   },
   computed: {
@@ -203,6 +239,38 @@ body {
   text-align: center;
   width: 350px;
 }
+.boleto img {
+  height: 200px;
+  width: 200px;
+}
+.pix img {
+  height: 200px;
+  width: 200px;
+}
+.pix {
+  margin-top: 20px;
+}
+.qrcode {
+  display: flex;
+  flex-direction: row;
+}
+#textarea {
+  margin: 3% 0% 0 0%;
+  border: 1px solid lightgray;
+  height: 7vh;
+  border-radius: 7px;
+  padding: 5px;
+  display: flex;
+}
+.pix h5 {
+  color: grey;
+  font-weight: bold;
+  font-style: normal;
+  font-family: "Roboto", sans-serif;
+  margin: 13% 0% 0 5%;
+  padding: 0px;
+  font-size: 1rem;
+}
 .drop2,
 .drop3 {
   background: #0d9f7a;
@@ -213,10 +281,6 @@ body {
   width: 150px;
   margin: 10px;
 }
-input[type="number" i] {
-  -moz-appearance: textfield;
-}
-
 option {
   color: white;
   background: #0d9f7a;
@@ -254,12 +318,13 @@ option {
   width: 400px;
 }
 .col1 {
-  margin: 0% 10% 0 0;
-  display: grid;
+  margin: 0% 5% 0 0;
+  display: flex;
+  flex-direction: column;
 }
 .col2 {
-  margin: 7px 0 0 10%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
 }
 .imagens {
   padding: 10px;
@@ -285,7 +350,7 @@ option {
   transition-duration: 0.3s;
   text-decoration: none;
   font-size: 20px;
-  margin: 5% 10% 0 10%;
+  margin: 3% 10% 0 10%;
   width: 190px;
   height: 50px;
 }
@@ -311,7 +376,7 @@ option {
   transition-duration: 0.3s;
   text-decoration: none;
   font-size: 15px;
-  margin: 5% 10% 0 25%;
+  margin: 0% 10% 0 25%;
   width: 190px;
   height: 50px;
 }
@@ -344,13 +409,27 @@ option {
 .subsubtitle {
   font-weight: bold;
   font-size: 17px;
-  padding: 5px;
+  padding: 13px;
 }
 ul.dropdown-menu.show {
   background-color: white;
   height: 100px;
   width: 200px;
   display: block;
+}
+.boleto {
+  margin-top: 30px;
+}
+.imprimirBoleto {
+  margin-left: 30px;
+  font-weight: bold;
+  font-style: normal;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+}
+
+.imprimirBoleto:hover {
+  text-decoration: none;
 }
 
 @media (max-width: 844px) {
