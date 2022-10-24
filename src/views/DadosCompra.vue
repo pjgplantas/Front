@@ -53,19 +53,21 @@
       </b-col>
       <b-col class="col2">
         <div class="subtitle">Dados de Compra</div>
+        {{ formaPagamento }}
+
         <div class="subsubtitle">Escolha a forma de pagamento</div>
-        <b-form-select class="mb-3 drop1" aria-placeholder="Forma de Pagamento">
-          <b-form-select-option value="cartão" @click="cartão == !cartão">
+        <b-form-select
+          v-model="formaPagamento"
+          class="mb-3 drop1"
+          aria-placeholder="Forma de Pagamento"
+        >
+          <b-form-select-option value="cartao" @click="cartão == !cartão">
             Cartão de Débito
           </b-form-select-option>
-          <b-form-select-option v-model="pedido.pix" value="pix"
-            >Pix</b-form-select-option
-          >
-          <b-form-select-option v-model="pedido.boleto" value="boleto"
-            >Boleto</b-form-select-option
-          >
+          <b-form-select-option value="pix">Pix</b-form-select-option>
+          <b-form-select-option value="boleto">Boleto</b-form-select-option>
         </b-form-select>
-        <div v-if="cartão == true">
+        <div v-if="formaPagamento === 'cartao'">
           <div class="subsubtitle">Numero do Cartão</div>
           <div>
             <b-form-input
@@ -112,7 +114,7 @@
             >Adicionar cartão</b-button
           >
         </div>
-        <div class="boleto" v-if="boleto == true">
+        <div class="boleto" v-if="formaPagamento === 'boleto'">
           <img src="../assets/images/Boleto.jpg" alt="" />
           <a href="/boleto" class="imprimirBoleto">
             Clique aqui para imprimir o boleto</a
@@ -121,7 +123,7 @@
           <hr />
           <h3 class="finalizar">Finalize o pagamento usando o Boleto!</h3>
         </div>
-        <div class="pix" v-if="pix == true">
+        <div class="pix" v-if="formaPagamento === 'pix'">
           <h4>Finalize o pagamento usando o Pix!</h4>
           <hr />
           <div class="qrcode">
@@ -151,6 +153,7 @@ export default {
   name: "cartaos",
   data() {
     return {
+      formaPagamento: "escolher",
       cartão: false,
       boleto: false,
       pix: false,
