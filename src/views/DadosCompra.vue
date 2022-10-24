@@ -55,7 +55,7 @@
         <div class="subtitle">Dados de Compra</div>
         <div class="subsubtitle">Escolha a forma de pagamento</div>
         <b-form-select class="mb-3 drop1" aria-placeholder="Forma de Pagamento">
-          <b-form-select-option value="cartão" @click="clicar">
+          <b-form-select-option value="cartão" @click="cartão == !cartão">
             Cartão de Débito
           </b-form-select-option>
           <b-form-select-option v-model="pedido.pix" value="pix"
@@ -114,7 +114,7 @@
         </div>
         <div class="boleto" v-if="boleto == true">
           <img src="../assets/images/Boleto.jpg" alt="" />
-          <a @click="exportToPDF" class="imprimirBoleto" id="boleto">
+          <a href="/boleto" class="imprimirBoleto">
             Clique aqui para imprimir o boleto</a
           >
           <div class="v-line"></div>
@@ -147,13 +147,12 @@
 
 <script>
 import { mapState } from "vuex";
-import html2pdf from "html2pdf.js";
 export default {
   name: "cartaos",
   data() {
     return {
       cartão: false,
-      boleto: true,
+      boleto: false,
       pix: false,
       text: "00020126330014br.gov.bcb.pix0111133136789125204000053039865802BR5925Carlos Henrique De Fraga 6009Sao Paulo62070503***630442E4",
 
@@ -185,12 +184,6 @@ export default {
     },
     clicar() {
       this.data.cartão = !this.data.cartão;
-    },
-    exportToPDF() {
-      html2pdf(document.getElementById("boleto"), {
-        margin: 1,
-        filename: "boleto.pdf",
-      });
     },
   },
   computed: {

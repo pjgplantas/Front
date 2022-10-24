@@ -1,7 +1,7 @@
 <template>
   <b-container class="container">
-    <div class="boleto" id="boleto">
-      <img src="../assets/images/Boleto.jpg" alt="" />
+    <div class="boleto">
+      <img id="boleto" src="../assets/images/Boleto.jpg" alt="" />
       <b-button @click="exportToPDF">Imprimir</b-button>
     </div>
   </b-container>
@@ -16,7 +16,7 @@ export default {
     exportToPDF() {
       html2pdf(document.getElementById("boleto"), {
         margin: 1,
-        filename: "i-was-html.pdf",
+        filename: "boleto.pdf",
       });
     },
   },

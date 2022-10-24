@@ -60,8 +60,7 @@
         v-for="comentario in planta.comentarios"
         :key="comentario.id"
       >
-        {{ comentario.usuario }} :
-        {{ comentario.texto }}
+        {{ comentario.usuario }} : {{ comentario.texto }}
       </div>
     </div>
   </b-container>
@@ -86,10 +85,6 @@ export default {
   },
   async created() {
     await this.getComentarios();
-    console.log("oioioiio");
-    console.log(this.$route.params.id);
-    console.log(this.user.id);
-    console.log(this.getPerfil);
     await this.getPlanta(this.$route.params.id);
   },
   methods: {
@@ -266,6 +261,9 @@ img {
   font-weight: 500;
   font-style: normal;
   font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .hrlay {

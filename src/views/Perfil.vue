@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container class="login-page" fluid>
-      <b-row>
+      <b-row class="rowPerfil">
         <b-col>
           <b-col>
             <b-form class="formp" v-if="show">
@@ -125,6 +125,9 @@ export default {
   align-content: center;
   background-color: white;
   display: flex;
+}
+.rowPerfil {
+  margin: 0 0 0 10%;
 }
 .login-page {
   width: 1905px;
