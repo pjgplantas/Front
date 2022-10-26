@@ -207,9 +207,10 @@ h4 {
   opacity: 80%;
   color: white;
 }
-img {
+.col1 img {
   height: 85%;
   border-radius: 5px 0px 0px 5px;
+  margin: 5% 0 0 20%;
 }
 #TotalValue {
   font-size: 40px;

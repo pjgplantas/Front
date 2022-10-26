@@ -14,7 +14,7 @@
                   />
                 </div>
                 <div class="NomeCliente">
-                  {{ user.username }} -- {{ user.id }}
+                  {{ user.username }}
                 </div>
                 <div class="EmailCliente">{{ user.email }}</div>
               </div>
@@ -114,14 +114,14 @@ export default {
 .imgperfil {
   display: flex;
   width: 150px;
-  margin-left: 12%;
+  margin-left: 7%;
 }
 
 .formp {
   border-radius: 2px;
   height: 90vh;
   width: 150vh;
-  margin-top: 2%;
+  margin-top: 3%;
   align-content: center;
   background-color: white;
   display: flex;
@@ -153,12 +153,14 @@ export default {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-weight: 600;
+  margin-left:60px;
 }
 
 .EmailCliente {
   color: black;
   opacity: 50%;
   font-size: 19px;
+  margin-left:40px;
 }
 .hr {
   margin-top: 0%;
@@ -166,6 +168,7 @@ export default {
 .HrForm {
   border: 1px solid #808080;
   height: 86vh;
+  margin-right: 40px;
 }
 
 .TituloPerfil {
@@ -198,10 +201,15 @@ export default {
   );
   border: 0;
   padding: 13px;
-  width: 150px;
+  width: 170px;
   font-size: 23px;
+  font-weight: bold;
   border-radius: 10px;
   margin: 5% 0 0 25%;
+  font-family: "Roboto", sans-serif;
+}
+.btnperfil:hover{
+  opacity: 80%;
 }
 
 @media (max-width: 844px) {
