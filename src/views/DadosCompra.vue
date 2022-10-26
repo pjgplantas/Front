@@ -53,8 +53,6 @@
       </b-col>
       <b-col class="col2">
         <div class="subtitle">Dados de Compra</div>
-        {{ formaPagamento }}
-
         <div class="subsubtitle">Escolha a forma de pagamento</div>
         <b-form-select
           v-model="formaPagamento"
@@ -201,9 +199,6 @@ body {
   background-color: rgba(255, 255, 255, 0.95);
 }
 
-.row {
-  margin-top: 4rem;
-}
 
 .title {
   font-family: "Jomolhari";
@@ -314,12 +309,13 @@ option {
   width: 400px;
 }
 .col1 {
-  margin: 0% 5% 0 0;
+  margin: 2% 5% 0 0;
   display: flex;
   flex-direction: column;
 }
 .col2 {
   display: flex;
+  margin: 2% 0 0 0;
   flex-direction: column;
 }
 .imagens {
@@ -346,7 +342,7 @@ option {
   transition-duration: 0.3s;
   text-decoration: none;
   font-size: 20px;
-  margin: 3% 10% 0 10%;
+  margin: 1% 10% 0 10%;
   width: 190px;
   height: 50px;
 }
@@ -372,7 +368,7 @@ option {
   transition-duration: 0.3s;
   text-decoration: none;
   font-size: 15px;
-  margin: 0% 10% 0 25%;
+  margin: 3% 10% 0 25%;
   width: 190px;
   height: 50px;
 }
