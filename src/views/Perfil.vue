@@ -1,68 +1,66 @@
 <template>
-  <div>
-    <b-container class="login-page" fluid>
-      <b-row class="rowPerfil">
+  <b-container class="login-page" fluid>
+    <b-row class="rowPerfil">
+      <b-col>
         <b-col>
-          <b-col>
-            <b-form class="formp" v-if="show">
-              <div class="parte1">
-                <div class="imgperfil">
-                  <img
-                    class="rounded-circle mt-5"
-                    width="150px"
-                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-                  />
-                </div>
-                <div class="NomeCliente">
-                  {{ user.username }}
-                </div>
-                <div class="EmailCliente">{{ user.email }}</div>
+          <b-form class="formp" v-if="show">
+            <div class="parte1">
+              <div class="imgperfil">
+                <img
+                  class="rounded-circle mt-5"
+                  width="150px"
+                  src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                />
               </div>
-              <div class="parte2"><hr class="HrForm" /></div>
-              <div class="parte3">
-                <div class="TituloPerfil">Configurações do Perfil</div>
-                <div class="divs">Primeiro Nome</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input id="input-2" v-model="form.first_name" required>
-                  </b-form-input>
-                </b-form-group>
-                <div class="divs">Sobrenome:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="form.last_name"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <div class="divs">Username:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="form.username"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <div class="divs">Email:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="form.email"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <b-button
-                  class="btnperfil"
-                  type="submit"
-                  @click.prevent="editarPerfil"
-                  >Alterar perfil</b-button
-                >
+              <div class="NomeCliente">
+                {{ user.username }}
               </div>
-            </b-form>
-          </b-col>
+              <div class="EmailCliente">{{ user.email }}</div>
+            </div>
+            <div class="parte2"><hr class="HrForm" /></div>
+            <div class="parte3">
+              <div class="TituloPerfil">Configurações do Perfil</div>
+              <div class="divs">Primeiro Nome</div>
+              <b-form-group id="input-group-2">
+                <b-form-input id="input-2" v-model="form.first_name" required>
+                </b-form-input>
+              </b-form-group>
+              <div class="divs">Sobrenome:</div>
+              <b-form-group id="input-group-2">
+                <b-form-input
+                  id="input-2"
+                  v-model="form.last_name"
+                  required
+                ></b-form-input>
+              </b-form-group>
+              <div class="divs">Username:</div>
+              <b-form-group id="input-group-2">
+                <b-form-input
+                  id="input-2"
+                  v-model="form.username"
+                  required
+                ></b-form-input>
+              </b-form-group>
+              <div class="divs">Email:</div>
+              <b-form-group id="input-group-2">
+                <b-form-input
+                  id="input-2"
+                  v-model="form.email"
+                  required
+                ></b-form-input>
+              </b-form-group>
+              <b-button
+                class="btnperfil"
+                type="submit"
+                @click.prevent="editarPerfil"
+                >Alterar perfil</b-button
+              >
+            </div>
+          </b-form>
         </b-col>
-      </b-row>
-    </b-container>
-  </div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -75,7 +73,7 @@ export default {
         username: "",
         last_name: "",
         first_name: "",
-        email:"",
+        email: "",
       },
       show: true,
     };
@@ -89,16 +87,15 @@ export default {
         await this.$patch(`/auth/${this.user.id}/`, this.form);
         alert("Perfil alterado com sucesso!");
         this.$router.push({ name: "Login" });
-
       } catch {
         alert("Erro");
       }
     },
-    async getPerfil(){
-      try{
+    async getPerfil() {
+      try {
         await this.$get(`/auth/${this.user.id}/`, this.form);
-      } catch{
-        alert("erro")
+      } catch {
+        alert("erro");
       }
     },
   },
@@ -153,14 +150,14 @@ export default {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-weight: 600;
-  margin-left:60px;
+  margin-left: 60px;
 }
 
 .EmailCliente {
   color: black;
   opacity: 50%;
   font-size: 19px;
-  margin-left:40px;
+  margin-left: 40px;
 }
 .hr {
   margin-top: 0%;
@@ -208,7 +205,7 @@ export default {
   margin: 5% 0 0 25%;
   font-family: "Roboto", sans-serif;
 }
-.btnperfil:hover{
+.btnperfil:hover {
   opacity: 80%;
 }
 

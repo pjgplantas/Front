@@ -30,7 +30,6 @@
             v-for="planta in plantas"
             :key="planta.id"
           >
-            <img :src="planta.imagem.url" class="imghome" />
             <hr class="hrH" />
             <div class="titulo5">{{ planta.nome }}</div>
             <b-card-text class="textop"> {{ planta.preco }} </b-card-text>
@@ -101,7 +100,7 @@ a.btn.btn1.btn-primary {
   border: 0;
   padding: 10px;
   font-size: 17px;
-  margin: 10% 0 0 0%;
+  margin-right: 20px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   white-space: nowrap;
@@ -113,7 +112,6 @@ a.btn.btn1.btn-primary {
   border: 0;
   padding: 15px;
   font-size: 17px;
-  margin: 10% 0 0 5%;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   white-space: nowrap;

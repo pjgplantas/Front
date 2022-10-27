@@ -9,7 +9,16 @@
           <b-navbar-nav>
             <b-nav-item href="/">Home</b-nav-item>
           </b-navbar-nav>
-          <b-nav-item-dropdown class="Carrinho" text="Carrinho">
+          <b-navbar-nav v-model="superuser">
+            <b-nav-item href="/planta" v-if="user.is_superuser === true"
+              >Planta</b-nav-item
+            >
+          </b-navbar-nav>
+          <b-nav-item-dropdown
+            v-if="user.is_superuser === false"
+            class="Carrinho"
+            text="Carrinho"
+          >
             <img
               src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
               alt=""
@@ -45,7 +54,7 @@
               >
             </div>
           </b-nav-item-dropdown>
-          <b-navbar-nav>
+          <b-navbar-nav v-if="user.is_superuser === false">
             <b-nav-item to="/perfil">Perfil</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav>
@@ -86,7 +95,8 @@ export default {
     return {
       itensCarrinho: {
         preco: "",
-      }
+      },
+      superuser: "",
     };
   },
   methods: {
