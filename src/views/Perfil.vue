@@ -42,19 +42,11 @@
                     required
                   ></b-form-input>
                 </b-form-group>
-                <div class="divs">Senha:</div>
+                <div class="divs">Email:</div>
                 <b-form-group id="input-group-2">
                   <b-form-input
                     id="input-2"
-                    v-model="form.password"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <div class="divs">Confirmar Senha:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="form.password_confirmation"
+                    v-model="form.email"
                     required
                   ></b-form-input>
                 </b-form-group>
@@ -83,22 +75,30 @@ export default {
         username: "",
         last_name: "",
         first_name: "",
-        password: "",
-        password_confirmation: "",
+        email:"",
       },
       show: true,
     };
   },
   async created() {
-    console.log(this.user.id);
     await this.getPerfil();
   },
   methods: {
     async editarPerfil() {
       try {
         await this.$patch(`/auth/${this.user.id}/`, this.form);
+        alert("Perfil alterado com sucesso!");
+        this.$router.push({ name: "Login" });
+
       } catch {
         alert("Erro");
+      }
+    },
+    async getPerfil(){
+      try{
+        await this.$get(`/auth/${this.user.id}/`, this.form);
+      } catch{
+        alert("erro")
       }
     },
   },

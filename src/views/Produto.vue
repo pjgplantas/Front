@@ -83,10 +83,6 @@ export default {
       texto: {},
     };
   },
-  async created() {
-    await this.getComentarios();
-    await this.getPlanta(this.$route.params.id);
-  },
   methods: {
     async getComentarios() {
       this.comentarios = await this.$get("comentarios/");
@@ -104,6 +100,10 @@ export default {
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user", "id"]),
+  },
+  async created() {
+    await this.getComentarios();
+    await this.getPlanta(this.$route.params.id);
   },
 };
 </script>
