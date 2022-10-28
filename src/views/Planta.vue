@@ -4,6 +4,27 @@
       <b-col>
         <b-form class="formp" v-if="show">
           <div class="adicionarPlanta">Adicionar Planta</div>
+          <div class="divs">Imagem</div>
+          <b-form-group>
+            <b-form-file
+              accept=".jpg, .png"
+              v-on:change="onFileChange"
+              label="Small:"
+              label-cols-sm="3"
+              label-size="sm"
+              placeholder="Escolha uma foto"
+              drop-placeholder="Drop file here..."
+            ></b-form-file
+          ></b-form-group>
+          <div class="divs">Descrição</div>
+          <b-form-group id="input-group-2">
+            <b-form-input id="input-2" v-model="imagem.description" required>
+            </b-form-input>
+          </b-form-group>
+          <hr />
+          <b-button v-on:change="onFileChange" @click="postImagem"
+            >Adicionar imagem</b-button
+          >
           <div class="divs">Tipo Planta</div>
           <b-form-group id="input-group-2">
             <b-form-input id="input-2" v-model="form.tipo_planta" required>
@@ -65,7 +86,9 @@
                 <b-icon icon="trash" class="b-0"></b-icon>
                 Excluir ></b-button
               >
-              <b-button class="btn3"> Alterar Planta</b-button>
+              <b-button @click="alteraPlanta" class="btn3">
+                Alterar Planta</b-button
+              >
             </div>
             <span></span> <span></span>
             <div class="formulario">
@@ -130,9 +153,14 @@ export default {
         nome: "",
         desc: "",
       },
+      imagem: {
+        file: null,
+        description: "",
+      },
       show: true,
       planta: {},
       plantas: [],
+      aparecerForm: false,
     };
   },
   async created() {
@@ -154,10 +182,22 @@ export default {
         alert("Erro");
       }
     },
-    async deletarPlanta() {
-      this.planta = this.planta.id;
+    async postImagem() {
       try {
-        await this.$delete(`/plantas/${this.planta.id}/`, this.formAlterar);
+        await this.$post(`/api/media/imagesUpload`, this.imagem);
+        alert("Imagem adicionada com sucesso");
+      } catch {
+        alert("Erro");
+      }
+    },
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    async deletarPlanta() {
+      try {
+        await this.$delete(`/plantas/${this.planta.id}/`, this.planta);
         alert("Planta removida com sucesso!");
       } catch {
         alert("Erro");
@@ -165,7 +205,8 @@ export default {
     },
     async alteraPlanta() {
       try {
-        await this.$patch(`/plantas/${this.planta.id}/`, this.form);
+        this.formAlterar.planta = this.planta.id;
+        await this.$patch(`/plantas/${this.planta.id}/`, this.formAlterar);
         alert("Planta editada com sucesso");
       } catch {
         alert("Erro");
@@ -193,6 +234,10 @@ export default {
   width: 100%;
   margin-left: 1px;
   background-color: white;
+}
+.collapsed > .when-open,
+.not-collapsed > .when-closed {
+  display: none;
 }
 .formularioAlterar {
   display: flex;
