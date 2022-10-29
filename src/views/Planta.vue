@@ -22,9 +22,18 @@
             </b-form-input>
           </b-form-group>
           <hr />
-          <b-button v-on:change="onFileChange" @click="postImagem"
-            >Adicionar imagem</b-button
-          >
+          <b-button @click="postImagem">Adicionar imagem</b-button>
+          <div class="divs">Imagens</div>
+          <b-form-select class="mb-3 drop1">
+            <b-form-select-option
+              value=""
+              v-for="imagem in imagens"
+              :key="imagem.id"
+              v-model="form.imagem"
+            > ({{imagem.description}} -
+              {{ imagem.attachment_key }})
+            </b-form-select-option>
+          </b-form-select>
           <div class="divs">Tipo Planta</div>
           <b-form-group id="input-group-2">
             <b-form-input id="input-2" v-model="form.tipo_planta" required>
@@ -146,6 +155,7 @@ export default {
         preco: "",
         nome: "",
         desc: "",
+        imagem: "",
       },
       formAlterar: {
         tipo_planta: "",
@@ -153,10 +163,8 @@ export default {
         nome: "",
         desc: "",
       },
-      imagem: {
-        file: null,
-        description: "",
-      },
+      imagem: {},
+      imagens: [],
       show: true,
       planta: {},
       plantas: [],
@@ -165,11 +173,16 @@ export default {
   },
   async created() {
     this.getPlanta();
+    this.getImagens();
   },
 
   methods: {
     async getPlanta() {
       this.plantas = await this.$get("plantas/");
+    },
+    async getImagens() {
+      this.imagens = await this.$get("api/media/imagesUpload/");
+      console.log(this.getImagens);
     },
     getPlantaUrl(id) {
       return `/produto/${id}`;
@@ -189,11 +202,6 @@ export default {
       } catch {
         alert("Erro");
       }
-    },
-    onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0]);
     },
     async deletarPlanta() {
       try {
