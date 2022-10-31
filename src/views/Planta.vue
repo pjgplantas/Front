@@ -30,8 +30,8 @@
               v-for="imagem in imagens"
               :key="imagem.id"
               v-model="form.imagem"
-            > ({{imagem.description}} -
-              {{ imagem.attachment_key }})
+            >
+              ({{ imagem.description }} - {{ imagem.attachment_key }})
             </b-form-select-option>
           </b-form-select>
           <div class="divs">Tipo Planta</div>
@@ -74,7 +74,12 @@
       <b-col>
         <div class="plantas">
           <span>Plantas</span>
-          <b-card
+          <PlantaComp
+            v-for="planta in plantas"
+            :key="planta.id"
+            :planta="planta"
+          />
+          <!-- <b-card
             img-alt="Image"
             img-top
             tag="article"
@@ -137,7 +142,7 @@
                 </b-form-group>
               </b-form>
             </div>
-          </b-card>
+          </b-card> -->
         </div>
       </b-col>
     </b-row>
@@ -146,8 +151,10 @@
 
 <script>
 import { mapState } from "vuex";
+import PlantaComp from "@/components/PlantaComp.vue";
 export default {
   name: "perfil",
+  components: { PlantaComp },
   data() {
     return {
       form: {
@@ -157,12 +164,7 @@ export default {
         desc: "",
         imagem: "",
       },
-      formAlterar: {
-        tipo_planta: "",
-        preco: "",
-        nome: "",
-        desc: "",
-      },
+
       imagem: {},
       imagens: [],
       show: true,
@@ -184,9 +186,7 @@ export default {
       this.imagens = await this.$get("api/media/imagesUpload/");
       console.log(this.getImagens);
     },
-    getPlantaUrl(id) {
-      return `/produto/${id}`;
-    },
+
     async adicionarPlanta() {
       try {
         await this.$post(`/plantas/`, this.form);
@@ -199,23 +199,6 @@ export default {
       try {
         await this.$post(`/api/media/imagesUpload`, this.imagem);
         alert("Imagem adicionada com sucesso");
-      } catch {
-        alert("Erro");
-      }
-    },
-    async deletarPlanta() {
-      try {
-        await this.$delete(`/plantas/${this.planta.id}/`, this.planta);
-        alert("Planta removida com sucesso!");
-      } catch {
-        alert("Erro");
-      }
-    },
-    async alteraPlanta() {
-      try {
-        this.formAlterar.planta = this.planta.id;
-        await this.$patch(`/plantas/${this.planta.id}/`, this.formAlterar);
-        alert("Planta editada com sucesso");
       } catch {
         alert("Erro");
       }
@@ -243,10 +226,6 @@ export default {
   margin-left: 1px;
   background-color: white;
 }
-.collapsed > .when-open,
-.not-collapsed > .when-closed {
-  display: none;
-}
 .formularioAlterar {
   display: flex;
   flex-direction: row;
@@ -272,6 +251,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  white-space: nowrap;
 }
 a.btn.btn1.btn-primary {
   background: #15d5a5;
@@ -366,6 +346,7 @@ a.btn.btn1.btn-primary:hover {
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+  white-space: nowrap;
   margin-top: 40px;
 }
 .plantas span {
@@ -393,10 +374,11 @@ a.btn.btn1.btn-primary:hover {
   font-weight: bold;
   white-space: nowrap;
 }
-.formulario {
+.formularioAlterar {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
 }
 
 @media (max-width: 844px) {
