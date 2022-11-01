@@ -57,7 +57,7 @@
             value=""
             v-for="imagem in imagens"
             :key="imagem.id"
-            v-model="form.imagem"
+            v-model="formAlterar.imagem"
           >
             ({{ imagem.description }} - {{ imagem.attachment_key }})
           </b-form-select-option>
@@ -77,8 +77,14 @@ export default {
         preco: "",
         nome: "",
         desc: "",
+        imagem: "",
       },
+      imagem: {},
+      imagens: [],
     };
+  },
+  async created() {
+    this.getImagens();
   },
   methods: {
     async deletarPlanta() {
@@ -100,6 +106,9 @@ export default {
     },
     getPlantaUrl(id) {
       return `/produto/${id}`;
+    },
+    async getImagens() {
+      this.imagens = await this.$get("api/media/imagesUpload/");
     },
   },
 };

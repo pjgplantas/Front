@@ -8,7 +8,6 @@
           <b-form-group>
             <b-form-file
               accept=".jpg, .png"
-              v-on:change="onFileChange"
               label="Small:"
               label-cols-sm="3"
               label-size="sm"
@@ -79,70 +78,6 @@
             :key="planta.id"
             :planta="planta"
           />
-          <!-- <b-card
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="height: 250px; width: 850px"
-            class="titlep mb-1"
-            v-for="planta in plantas"
-            :key="planta.id"
-          >
-            <div class="titulo5">{{ planta.nome }} - ID: {{ planta.id }}</div>
-            <div class="buttons">
-              <b-button
-                class="btn1"
-                :to="getPlantaUrl(planta.id)"
-                variant="primary"
-                >Ir para a planta</b-button
-              >
-              <b-button @click="deletarPlanta" class="btn2">
-                <b-icon icon="trash" class="b-0"></b-icon>
-                Excluir ></b-button
-              >
-              <b-button @click="alteraPlanta" class="btn3">
-                Alterar Planta</b-button
-              >
-            </div>
-            <span></span> <span></span>
-            <div class="formulario">
-              <b-form class="formularioAlterar">
-                <div class="tipoPlanta">Tipo Planta</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="formAlterar.tipo_planta"
-                    required
-                  >
-                  </b-form-input>
-                </b-form-group>
-                <div>Preço:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="formAlterar.preco"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <div>Nome:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="formAlterar.nome"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <div>Descrição:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="formAlterar.desc"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-              </b-form>
-            </div>
-          </b-card> -->
         </div>
       </b-col>
     </b-row>
@@ -166,11 +101,9 @@ export default {
       },
 
       imagem: {},
-      imagens: [],
       show: true,
       planta: {},
       plantas: [],
-      aparecerForm: false,
     };
   },
   async created() {
@@ -184,7 +117,6 @@ export default {
     },
     async getImagens() {
       this.imagens = await this.$get("api/media/imagesUpload/");
-      console.log(this.getImagens);
     },
 
     async adicionarPlanta() {
@@ -231,11 +163,17 @@ export default {
   flex-direction: row;
 }
 .plantas .form-control {
-  width: 150px;
+  width: 340px;
   flex-wrap: wrap;
 }
 .tipoPlanta {
   flex-wrap: nowrap;
+}
+.custom-select {
+  width: 70%;
+  margin-left: 20px;
+  border-style: none none solid none;
+  border-color: rgba(62, 150, 97, 0.95);
 }
 .login-page {
   background: #09b388; /* fallback for old browsers */
