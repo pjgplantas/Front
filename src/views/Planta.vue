@@ -183,7 +183,6 @@ export default {
     #00bf8f
   ); /* Chrome 10-25, Safari 5.1-6 */
   width: 100%;
-  height: 1900px;
 }
 .card-body {
   display: flex;

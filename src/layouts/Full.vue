@@ -167,9 +167,10 @@ ul.dropdown-menu.dropdown-menu-right.show {
 }
 ul.dropdown-menu.show {
   background-color: white;
-  height: 580px;
   width: 220px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .imgcarrinho {
   margin: 3% 0 0 2%;

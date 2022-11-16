@@ -93,6 +93,17 @@ export default {
       this.comentarios = await this.$post("comentarios/", this.comentario);
       await this.getComentarios();
     },
+    async deleteComentarios() {
+      try {
+        await this.$delete(
+          `/plantas/${this.planta.id}/comentarios`,
+          this.comentario
+        );
+        alert("Planta removida com sucesso!");
+      } catch {
+        alert("Erro");
+      }
+    },
     async getPlanta(id) {
       const res = await this.$get(`plantas/${id}/`);
       this.planta = res;
