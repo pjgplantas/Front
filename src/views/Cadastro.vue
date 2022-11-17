@@ -303,8 +303,8 @@ a:hover {
   }
   .formCadastro {
     width: 336px;
-    height: 92vh;
-    margin: -32% -8% 0 -3px;
+    height: 85vh;
+    margin: -32% -8% 0 10px;
     padding: 50px;
   }
 
@@ -329,11 +329,12 @@ a:hover {
     padding: 10px;
     height: 50px;
     width: 110px;
+    margin: 6px -40px 0px 0px;
   }
   .logo img {
     width: 200px;
     height: 200px;
-    margin: -3% 0% 5vh 3vh;
+    margin: -5% -41% 5vh 3vh;
   }
   .logo {
     margin: 0;

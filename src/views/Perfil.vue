@@ -222,14 +222,14 @@ export default {
 
   .login-page {
     width: 390px;
-    height: 1230px;
+    height: 910px;
     padding: 0;
   }
   .formp {
     width: 370px;
     flex-direction: column;
-    height: 1200px;
-    margin-left: 0.4%;
+    height: 105vh;
+    margin-left: 2.5%;
   }
   .parte1 {
     width: 300px;
@@ -251,6 +251,7 @@ export default {
     height: 700px;
     margin-left: 30px;
     font-size: 10px;
+    margin-top: 11vh;
   }
   .Titulo2Perfil {
     font-size: 20px;
@@ -300,6 +301,18 @@ export default {
   }
   .TituloPerfil {
     font-size: 20px;
+  }
+  .btnperfil {
+  background: rgb(21, 213, 165);
+  background: linear-gradient( 7deg, rgba(21, 213, 165, 1) 0%, rgba(54, 131, 100, 1) 66% );
+  border: 0;
+  padding: 13px;
+  width: 170px;
+  font-size: 23px;
+  font-weight: bold;
+  border-radius: 10px;
+  margin: 9% 0 0 20%;
+  font-family: "Roboto", sans-serif;
   }
 }
 </style>

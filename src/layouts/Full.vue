@@ -1,7 +1,7 @@
 <template>
   <div class="dprincipal">
     <b-navbar class="navpr" toggleable="lg" type="dark">
-      <b-navbar-brand id="navb" disabled> <h3>PJG</h3></b-navbar-brand>
+      <b-navbar-brand href="/" id="navb"> <h3>PJG</h3></b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
@@ -184,6 +184,7 @@ ul.dropdown-menu.show {
   font-family: Times, serif;
   text-align: center;
   color: #099d78;
+  background-color: #fff;
 }
 .PreçoP {
   font-size: 18px;
