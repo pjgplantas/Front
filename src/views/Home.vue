@@ -40,7 +40,7 @@
                 variant="primary"
                 >Ir para a planta</b-button
               >
-              <b-button class="btn2">
+              <b-button class="btn2" @click="postCarrinho(planta.id)">
                 <b-icon icon="cart2" class="b-0"></b-icon>
                 ></b-button
               >
@@ -57,13 +57,22 @@
 import { mapState } from "vuex";
 export default {
   name: "Planta",
-  computed: {
-    ...mapState("auth", ["loggedIn"]),
-  },
   data() {
     return {
       planta: {},
       plantas: [],
+      compras: {
+        usuario: 0,
+        rg: null,
+        endereco: null,
+        complemento: null,
+        cpf: null,
+        itens: {
+          quantidade: 1,
+          planta: 0,
+          total: "456.00",
+        },
+      },
     };
   },
   async created() {
@@ -76,6 +85,16 @@ export default {
     getPlantaUrl(id) {
       return `/produto/${id}`;
     },
+    async postCarrinho(planta) {
+      const carrinho = {
+        itens: [{ planta, quantidade: 1 }],
+      };
+      // this.compras.itens.planta = this.planta.id;
+      await this.$patch("compras/1/", carrinho);
+    },
+  },
+  computed: {
+    ...mapState("auth", ["loggedIn", "user", "id"]),
   },
 };
 </script>

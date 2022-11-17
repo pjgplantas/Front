@@ -14,11 +14,7 @@
               >Planta</b-nav-item
             >
           </b-navbar-nav>
-          <b-nav-item-dropdown
-            v-if="user.is_superuser === false"
-            class="Carrinho"
-            text="Carrinho"
-          >
+          <b-nav-item-dropdown class="Carrinho" text="Carrinho">
             <img
               src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
               alt=""

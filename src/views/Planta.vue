@@ -5,13 +5,12 @@
         <b-form class="formp" v-if="show">
           <div class="adicionarPlanta">Adicionar Planta</div>
           <div class="divs">Imagem</div>
-          <input type="file" @change="uploadFile" ref="file">
-          <!-- <div class="divs">Descrição</div>
+          <input type="file" @change="uploadFile" ref="file" />
+          <div class="divs">Descrição</div>
           <b-form-group id="input-group-2">
-            <b-form-input id="input-2" v-model="imagem.description" required>
-            </b-form-input>
+            <b-form-input id="input-2" ref="desc"> </b-form-input>
           </b-form-group>
-          <hr /> -->
+          <hr />
           <b-button @click="submitFile">Adicionar imagem</b-button>
           <div class="divs">Imagens</div>
           <b-form-select class="mb-3 drop1">
@@ -99,8 +98,8 @@ export default {
     };
   },
   async created() {
-    this.getPlanta();
-    this.getImagens();
+    await this.getPlanta();
+    await this.getImagens();
   },
 
   methods: {
@@ -112,7 +111,6 @@ export default {
     },
 
     async adicionarPlanta() {
-      this.form.imagem = this.imagem.attachment_key
       try {
         await this.$post(`/plantas/`, this.form);
         alert("Planta adicionada com sucesso!");
@@ -121,22 +119,28 @@ export default {
       }
     },
     uploadFile() {
-        this.Images = this.$refs.file.files[0];
-      },
-      submitFile() {
-        const formData = new FormData();
-        formData.append('file', this.Images);
-        const headers = { 'Content-Type': 'multipart/form-data' };
-        axios.post('http://127.0.0.1:8000/api/media/imagesUpload/', formData, { headers }).then((res) => {
+      this.Images = this.$refs.file.files[0];
+      this.Desc = this.$refs.desc.Images;
+    },
+    submitFile() {
+      const formData = new FormData();
+      formData.append("file", this.Images);
+      formData.append("description", this.Desc);
+      const headers = { "Content-Type": "multipart/form-data" };
+      axios
+        .post("http://127.0.0.1:8000/api/media/imagesUpload/", formData, {
+          headers,
+        })
+        .then((res) => {
           res.data.files; // binary representation of the file
           res.status; // HTTP status
         });
+    },
+    computed: {
+      ...mapState("auth", ["loggedIn", "user", "id"]),
+    },
   },
-  computed: {
-    ...mapState("auth", ["loggedIn", "user", "id"]),
-  },
-},
-}
+};
 </script>
 
 <style>
