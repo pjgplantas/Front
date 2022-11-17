@@ -5,23 +5,14 @@
         <b-form class="formp" v-if="show">
           <div class="adicionarPlanta">Adicionar Planta</div>
           <div class="divs">Imagem</div>
-          <b-form-group>
-            <b-form-file
-              accept=".jpg, .png"
-              label="Small:"
-              label-cols-sm="3"
-              label-size="sm"
-              placeholder="Escolha uma foto"
-              drop-placeholder="Drop file here..."
-            ></b-form-file
-          ></b-form-group>
-          <div class="divs">Descrição</div>
+          <input type="file" @change="uploadFile" ref="file">
+          <!-- <div class="divs">Descrição</div>
           <b-form-group id="input-group-2">
             <b-form-input id="input-2" v-model="imagem.description" required>
             </b-form-input>
           </b-form-group>
-          <hr />
-          <b-button @click="postImagem">Adicionar imagem</b-button>
+          <hr /> -->
+          <b-button @click="submitFile">Adicionar imagem</b-button>
           <div class="divs">Imagens</div>
           <b-form-select class="mb-3 drop1">
             <b-form-select-option
@@ -87,6 +78,7 @@
 <script>
 import { mapState } from "vuex";
 import PlantaComp from "@/components/PlantaComp.vue";
+import axios from "axios";
 export default {
   name: "perfil",
   components: { PlantaComp },
@@ -120,6 +112,7 @@ export default {
     },
 
     async adicionarPlanta() {
+      this.form.imagem = this.imagem.attachment_key
       try {
         await this.$post(`/plantas/`, this.form);
         alert("Planta adicionada com sucesso!");
@@ -127,19 +120,23 @@ export default {
         alert("Erro");
       }
     },
-    async postImagem() {
-      try {
-        await this.$post(`/api/media/imagesUpload`, this.imagem);
-        alert("Imagem adicionada com sucesso");
-      } catch {
-        alert("Erro");
-      }
-    },
+    uploadFile() {
+        this.Images = this.$refs.file.files[0];
+      },
+      submitFile() {
+        const formData = new FormData();
+        formData.append('file', this.Images);
+        const headers = { 'Content-Type': 'multipart/form-data' };
+        axios.post('http://127.0.0.1:8000/api/media/imagesUpload/', formData, { headers }).then((res) => {
+          res.data.files; // binary representation of the file
+          res.status; // HTTP status
+        });
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user", "id"]),
   },
-};
+},
+}
 </script>
 
 <style>
