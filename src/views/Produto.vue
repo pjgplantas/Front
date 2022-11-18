@@ -170,7 +170,7 @@ h4 {
   font-size: 30px;
 }
 #h1Nome {
-  color: #0f3406;
+  color: #086637;
   text-align: center;
   font-size: 4rem;
   font-weight: 500;
@@ -218,7 +218,7 @@ h4 {
   opacity: 80%;
   color: white;
 }
-.col1 img {
+.imgproduto{
   height: 85%;
   border-radius: 5px 0px 0px 5px;
   margin: 5% 0 0 20%;
@@ -309,13 +309,15 @@ h4 {
     justify-content: center;
     flex-grow: 1;
   }
+
+
   .navpr {
     box-shadow: none;
   }
-  img {
+  .imgproduto {
     width: 300px;
     height: 300px;
-    margin-left: 7%;
+    margin:0px;
   }
   .col2 {
     width: 390px;
@@ -334,10 +336,15 @@ h4 {
     font-size: 30px;
   }
   .descricao {
+    text-align: left;
+    color: #0f3406;
+    padding: 15px;
+
     font-size: 20px;
+    width: 350px;
   }
   .btncad {
-    margin: 9% 0 0 35%;
+    margin: 9% 0 0 ;
   }
   #footer {
     color: #3e9661;
@@ -360,7 +367,7 @@ h4 {
   .Comentarios {
     border: 0;
     width: 350px;
-    height: 150vh;
+    height: 35vh;
     margin: 4% 5%;
     flex-direction: column;
   }
@@ -369,29 +376,72 @@ h4 {
     font-size: 30px;
   }
   .FazerComentario {
-    display: grid;
     width: 367px;
     justify-content: flex-start;
+    flex-direction: column;
     flex-grow: 1;
   }
   .TextoComentario {
-    width: 250px;
-    height: 20px;
+    margin: 2% 0 0 2%;
+    background: rgba(226, 255, 238, 0.95);
+    box-shadow: 0px 4px 4px rgb(35 184 94 / 63%);
+    border-radius: 20px;
+    width: 90%;
+
   }
+
   #textarea {
     resize: none;
   }
   .Respostas {
-    height: 300px;
-    flex-grow: 1;
+    color: #000000;
+    display: flex;
+    font-size: 20px;
+    margin: 4% 0 0 5%;
+    padding-top: 10px;
+    background: rgba(228, 255, 239, 0.95);
+    width: 38vh;
+    height: 50px;
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    font-family: "Roboto", sans-serif;
+    flex-direction: row;
+    justify-content: space-between;
   }
   .aResposta {
     display: grid;
     font-size: 10px;
   }
   .BotaoComentario {
-    width: 80px;
+    width: 130px;
     height: 40px;
+    background: rgba(62, 150, 97, 0.95);
+    border-radius: 5px;
+    margin: 2% 25% 0 3%;
+    font-size: 1.7rem;
+    font-weight: 500;
+    padding: 5px;
+    border-color: rgba(62, 150, 97, 0.95);
+  }
+  #h1Nome{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 50;
+    width: 350px;
+    margin: 0px;
+  }
+  #TotalValue {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  margin: 5% 0 0 10px;
+  padding-left: 15px;
+  }
+  .subdescricao{
+    padding: 15px;
   }
 }
 </style>
