@@ -119,7 +119,10 @@ export default {
       form: {
         email: "",
         password: "",
-        usuario: "",
+        password_confirmation: "",
+        username: "",
+        last_name: "",
+        first_name: "",
       },
       show: true,
     };
@@ -136,9 +139,6 @@ export default {
         alert("Erro");
       }
     },
-    //   async getUsuario() {
-    //     this.usuario = await this.$get("auth/");
-    //   },
   },
 };
 </script>
@@ -289,7 +289,7 @@ a:hover {
   opacity: 50%;
   text-decoration: none;
 }
-.row{
+.row {
   display: flex;
   flex-wrap: wrap;
   margin-right: -8px;
