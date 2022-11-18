@@ -30,21 +30,25 @@
             v-for="planta in plantas"
             :key="planta.id"
           >
-            <img :src="planta.imagem.url" class="imghome" />
-            <hr class="hrH" />
-            <div class="titulo5">{{ planta.nome }}</div>
-            <b-card-text class="textop"> {{ planta.preco }} </b-card-text>
-            <div class="buttons">
-              <b-button
-                class="btn1"
-                :to="getPlantaUrl(planta.id)"
-                variant="primary"
-                >Ir para a planta</b-button
-              >
-              <b-button class="btn2" @click="postCarrinho(planta.id)">
-                <b-icon icon="cart2" class="b-0"></b-icon>
-                ></b-button
-              >
+            <div class="imagens">
+              <img :src="planta.imagem.url" class="imghome" />
+            </div>
+            <div class="info">
+              <hr class="hrH" />
+              <div class="titulo5">{{ planta.nome }}</div>
+              <b-card-text class="textop"> {{ planta.preco }} </b-card-text>
+              <div class="buttons">
+                <b-button
+                  class="btn1"
+                  :to="getPlantaUrl(planta.id)"
+                  variant="primary"
+                  >Ir para a planta</b-button
+                >
+                <b-button class="btn2" @click="postCarrinho(planta.id)">
+                  <b-icon icon="cart2" class="b-0"></b-icon>
+                  ></b-button
+                >
+              </div>
             </div>
           </b-card>
         </b-col>
@@ -144,8 +148,13 @@ a.btn.btn1.btn-primary:hover {
   height: 300px;
 }
 .imghome {
-  height: 300px;
+  height: auto;
+  width: 100%;
 }
+.imagens {
+  height: 70%;
+}
+
 .card {
   height: 300px;
   width: 300px;
