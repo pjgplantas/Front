@@ -30,6 +30,7 @@
             v-for="planta in plantas"
             :key="planta.id"
           >
+            <img :src="planta.imagem.url" class="imghome" />
             <hr class="hrH" />
             <div class="titulo5">{{ planta.nome }}</div>
             <b-card-text class="textop"> {{ planta.preco }} </b-card-text>
