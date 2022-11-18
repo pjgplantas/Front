@@ -15,7 +15,9 @@
         <b-icon icon="trash" class="b-0"></b-icon>
         Excluir ></b-button
       >
-      <b-button @click="alteraPlanta" class="btn3"> Alterar Planta</b-button>
+      <b-button @click.prevent="submitFile" class="btn3">
+        Alterar Planta</b-button
+      >
     </div>
     <span></span> <span></span>
     <div class="formulario">
@@ -52,22 +54,14 @@
         </b-form-group>
         <br />
         <div>Imagem:</div>
-        <b-form-select class="mb-3 drop1">
-          <b-form-select-option
-            value=""
-            v-for="imagem in imagens"
-            :key="imagem.id"
-            v-model="formAlterar.imagem"
-          >
-            ({{ imagem.description }} - {{ imagem.attachment_key }})
-          </b-form-select-option>
-        </b-form-select>
+        <input @change="uploadFile" type="file" ref="file" />
       </b-form>
     </div>
   </b-card>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   props: ["planta"],
   data() {
@@ -77,7 +71,7 @@ export default {
         preco: "",
         nome: "",
         desc: "",
-        imagem: "",
+        imagem_attachment_key: "",
       },
       imagem: {},
       imagens: [],
@@ -109,6 +103,24 @@ export default {
     },
     async getImagens() {
       this.imagens = await this.$get("api/media/imagesUpload/");
+    },
+    uploadFile() {
+      this.Images = this.$refs.file.files[0];
+    },
+    async submitFile() {
+      const formData = new FormData();
+      formData.append("file", this.Images);
+      const headers = { "Content-Type": "multipart/form-data" };
+      const { data } = await axios.post(
+        "http://localhost:8000/api/media/imagesUpload/",
+        formData,
+        { headers }
+      );
+      this.formAlterar.imagem_attachment_key = data.attachment_key;
+      await axios.put(
+        `http://localhost:8000/plantas/${this.planta.id}/`,
+        this.formAlterar
+      );
     },
   },
 };

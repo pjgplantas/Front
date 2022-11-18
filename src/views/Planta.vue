@@ -13,16 +13,7 @@
           <hr />
           <b-button @click="submitFile">Adicionar imagem</b-button>
           <div class="divs">Imagens</div>
-          <b-form-select class="mb-3 drop1">
-            <b-form-select-option
-              value=""
-              v-for="imagem in imagens"
-              :key="imagem.id"
-              v-model="form.imagem"
-            >
-              ({{ imagem.description }} - {{ imagem.attachment_key }})
-            </b-form-select-option>
-          </b-form-select>
+          <input type="file" @change="uploadFiles" ref="file" />
           <div class="divs">Tipo Planta</div>
           <b-form-group id="input-group-2">
             <b-form-input id="input-2" v-model="form.tipo_planta" required>
@@ -52,10 +43,7 @@
               required
             ></b-form-input>
           </b-form-group>
-          <b-button
-            class="btnperfil"
-            type="submit"
-            @click.prevent="adicionarPlanta"
+          <b-button class="btnperfil" type="submit" @click.prevent="submitFiles"
             >Adicionar Planta</b-button
           >
         </b-form>
@@ -88,7 +76,7 @@ export default {
         preco: "",
         nome: "",
         desc: "",
-        imagem: "",
+        imagem_attachment_key: "",
       },
 
       imagem: {},
@@ -136,6 +124,22 @@ export default {
           res.status; // HTTP status
         });
     },
+    uploadFiles() {
+      this.Images = this.$refs.file.files[0];
+    },
+    async submitFiles() {
+      const formData = new FormData();
+      formData.append("file", this.Images);
+      const headers = { "Content-Type": "multipart/form-data" };
+      const { data } = await axios.post(
+        "http://localhost:8000/api/media/imagesUpload/",
+        formData,
+        { headers }
+      );
+      this.form.imagem_attachment_key = data.attachment_key;
+      await axios.post("http://localhost:8000/plantas/", this.form);
+    },
+
     computed: {
       ...mapState("auth", ["loggedIn", "user", "id"]),
     },
