@@ -262,7 +262,7 @@ a.btn.btn1.btn-primary:hover {
   }
   .col {
     padding: 20px;
-    margin: 0px 8% -5px -50px;
+    margin: -6px 0% -7px -6px;
   }
   .card {
     margin-left: 50px;

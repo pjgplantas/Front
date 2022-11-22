@@ -338,9 +338,7 @@ a.btn.btn1.btn-primary:hover {
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
   }
-  .card-body{
-    
-  }
+  
   .imgperfil {
     margin-left: 25%;
   }
@@ -423,5 +421,12 @@ a.btn.btn1.btn-primary:hover {
     width: 250px;
     padding: 5%;
   }
+  .card.titlep.mb-1{
+    height: 250px;
+    width: 850px;
+  
 }
+
+}
+
 </style>
