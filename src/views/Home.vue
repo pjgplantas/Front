@@ -44,7 +44,7 @@
                   variant="primary"
                   >Ir para a planta</b-button
                 >
-                <b-button class="btn2" @click="postCarrinho(planta.id)">
+                <b-button class="btn2" @click="patchCarrinho(planta.id)">
                   <b-icon icon="cart2" class="b-0"></b-icon>
                   ></b-button
                 >
@@ -90,13 +90,19 @@ export default {
     getPlantaUrl(id) {
       return `/produto/${id}`;
     },
-    async postCarrinho(planta) {
+    async patchCarrinho(planta) {
       const carrinho = {
         itens: [{ planta, quantidade: 1 }],
       };
       // this.compras.itens.planta = this.planta.id;
-      await this.$patch("compras/1/", carrinho);
+      await this.$patch(`compras/`, carrinho);
     },
+    async postCarrinho(planta){
+      const carrinho = {
+        itens: [{ planta, quantidade: 1 }],
+      };
+      await this.$post("compras/", carrinho);
+    }
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user", "id"]),
