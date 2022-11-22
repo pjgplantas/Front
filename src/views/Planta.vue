@@ -181,12 +181,8 @@ export default {
   border-color: rgba(62, 150, 97, 0.95);
 }
 .login-page {
-  background: #09b388; /* fallback for old browsers */
-  background: -webkit-(
-    to top,
-    #001510,
-    #00bf8f
-  ); /* Chrome 10-25, Safari 5.1-6 */
+
+/* Chrome 10-25, Safari 5.1-6 */
   width: 100%;
 }
 .card-body {
@@ -209,7 +205,7 @@ a.btn.btn1.btn-primary {
   margin-left: 40px;
 }
 .btn2 {
-  background: #e81828;
+  background: linear-gradient(7deg, #931010 0%, #cd1b1b 66%);
   border-radius: 5px;
   border: 0;
   font-size: 17px;
@@ -224,7 +220,7 @@ a.btn.btn1.btn-primary {
   background: #e81828;
 }
 .btn3 {
-  background: #7cb9e8;
+  background: #1d86d6;
   border-radius: 5px;
   border: 0;
   font-size: 17px;
@@ -235,11 +231,17 @@ a.btn.btn1.btn-primary {
   padding-top: 5px;
   margin-left: 20px;
 }
+
 .btn3:hover {
   background: #4c708b;
 }
 a.btn.btn1.btn-primary:hover {
   background: #328051a1;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #20935e;
+  border-color: #6c757d;
 }
 .adicionarPlanta {
   font-family: "Roboto", sans-serif;
@@ -248,6 +250,7 @@ a.btn.btn1.btn-primary:hover {
   padding: 25px;
   margin: 0 0 0 30%;
 }
+
 .divs {
   color: black;
   font-style: normal;
@@ -263,12 +266,7 @@ a.btn.btn1.btn-primary:hover {
   width: 480px;
 }
 .btnperfil {
-  background: rgb(21, 213, 165);
-  background: linear-gradient(
-    7deg,
-    rgba(21, 213, 165, 1) 0%,
-    rgba(54, 131, 100, 1) 66%
-  );
+  background: linear-gradient(7deg, #1d583b 0%, #41a17b 66%);
   border: 0;
   padding: 13px;
   width: 180px;
@@ -329,7 +327,20 @@ a.btn.btn1.btn-primary:hover {
     flex-wrap: wrap;
     margin-left: 0.2%;
   }
-
+  .card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+  }
+  .card-body{
+    
+  }
   .imgperfil {
     margin-left: 25%;
   }
@@ -399,7 +410,7 @@ a.btn.btn1.btn-primary:hover {
   #footer {
     color: #3e9661;
     font-size: 16px;
-    margin: 10% 10% 7% 5%;
+    margin: 105vh 10% 7% 5%;
     width: 340px;
   }
   .footer1 {
@@ -411,9 +422,6 @@ a.btn.btn1.btn-primary:hover {
     margin: 3%;
     width: 250px;
     padding: 5%;
-  }
-  .TituloPerfil {
-    font-size: 20px;
   }
 }
 </style>
