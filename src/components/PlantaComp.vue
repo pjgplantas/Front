@@ -85,6 +85,7 @@ export default {
       try {
         await this.$delete(`/plantas/${this.planta.id}/`, this.planta);
         alert("Planta removida com sucesso!");
+        this.$router.push({ name: "Home" });
       } catch {
         alert("Erro");
       }

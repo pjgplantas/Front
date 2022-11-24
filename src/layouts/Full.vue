@@ -23,25 +23,11 @@
               "
               class="imgcarrinho"
             />
-            <div class="NomeP">
-              Areca Bambu
-              <div class="PreçoP">Valor = 45,00</div>
+            <div class="NomeP"></div>
+            <div class="contentCart">
+              <div class="PreçoP">{{ compras.total }}</div>
+              <div class="QuantidadeP">{{ compras.quantidade }}</div>
             </div>
-            <br />
-            <hr class="hrc" />
-            <img
-              src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
-              alt=""
-              width="200px"
-              height="130px
-              "
-              class="imgcarrinho"
-            />
-            <div class="NomeP">
-              Areca Bambu
-              <div class="PreçoP">Valor = 45,00</div>
-            </div>
-            <br />
             <hr class="hrc" />
             <div>
               <div class="TotalP">Total: 90,00</div>
@@ -89,14 +75,20 @@ import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
-      itensCarrinho: {
-        preco: "",
-      },
       superuser: "",
+      compra: {},
+      compras: [],
     };
+  },
+  async created() {
+    await this.getCarrinho();
   },
   methods: {
     ...mapActions("auth", ["logout"]),
+
+    async getCarrinho() {
+      this.compras = await this.$get("compras/9/");
+    },
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user", "id"]),
@@ -163,17 +155,16 @@ ul.dropdown-menu.dropdown-menu-right.show {
 }
 ul.dropdown-menu.show {
   background-color: white;
-  width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .imgcarrinho {
-  margin: 3% 0 0 2%;
+  margin: 3% 0 0 0%;
 }
 .NomeP {
   white-space: nowrap;
-  margin: 5% 0 0 3%;
+  margin-top: 1vh;
   font-weight: bold;
   font-size: 20px;
   font-style: italic;
@@ -186,12 +177,22 @@ ul.dropdown-menu.show {
   font-size: 18px;
   font-weight: lighter;
   font-family: "Times New Roman", Times, serif;
-  text-align: center;
+  margin-left: 1vw;
+  margin-top: 3%;
+  color: #099d78;
+}
+.QuantidadeP {
+  font-size: 18px;
+  font-weight: lighter;
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 15%;
+  margin-top: 3%;
+  color: #099d78;
 }
 .hrc {
   width: 170px;
   border: 1px solid black;
-  margin: 0 0 0 10%;
+  margin: 5% 0 0 7%;
 }
 .TotalP {
   font-weight: bold;
@@ -199,6 +200,10 @@ ul.dropdown-menu.show {
   font-family: "Times New Roman", Times, serif;
   text-align: center;
   margin-top: 1vh;
+}
+.contentCart {
+  display: flex;
+  flex-direction: row;
 }
 .ButtonP {
   padding: 10px;

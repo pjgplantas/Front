@@ -66,18 +66,6 @@ export default {
     return {
       planta: {},
       plantas: [],
-      compras: {
-        usuario: 0,
-        rg: null,
-        endereco: null,
-        complemento: null,
-        cpf: null,
-        itens: {
-          quantidade: 1,
-          planta: 0,
-          total: "456.00",
-        },
-      },
     };
   },
   async created() {
@@ -94,15 +82,14 @@ export default {
       const carrinho = {
         itens: [{ planta, quantidade: 1 }],
       };
-      // this.compras.itens.planta = this.planta.id;
-      await this.$patch(`compras/`, carrinho);
+      await this.$patch(`compras/9/`, carrinho);
     },
-    async postCarrinho(planta){
+    async postCarrinho(planta) {
       const carrinho = {
         itens: [{ planta, quantidade: 1 }],
       };
       await this.$post("compras/", carrinho);
-    }
+    },
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user", "id"]),

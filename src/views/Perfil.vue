@@ -69,12 +69,7 @@ export default {
   name: "perfil",
   data() {
     return {
-      form: {
-        username: "",
-        last_name: "",
-        first_name: "",
-        email: "",
-      },
+      form: {},
       show: true,
     };
   },
@@ -303,16 +298,20 @@ export default {
     font-size: 20px;
   }
   .btnperfil {
-  background: rgb(21, 213, 165);
-  background: linear-gradient( 7deg, rgba(21, 213, 165, 1) 0%, rgba(54, 131, 100, 1) 66% );
-  border: 0;
-  padding: 13px;
-  width: 170px;
-  font-size: 23px;
-  font-weight: bold;
-  border-radius: 10px;
-  margin: 9% 0 0 20%;
-  font-family: "Roboto", sans-serif;
+    background: rgb(21, 213, 165);
+    background: linear-gradient(
+      7deg,
+      rgba(21, 213, 165, 1) 0%,
+      rgba(54, 131, 100, 1) 66%
+    );
+    border: 0;
+    padding: 13px;
+    width: 170px;
+    font-size: 23px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 9% 0 0 20%;
+    font-family: "Roboto", sans-serif;
   }
 }
 </style>

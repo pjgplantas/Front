@@ -138,6 +138,8 @@ export default {
       );
       this.form.imagem_attachment_key = data.attachment_key;
       await axios.post("http://localhost:8000/plantas/", this.form);
+      alert("Planta adicionada com sucesso!");
+      this.$router.push({ name: "Home" });
     },
 
     computed: {
@@ -181,8 +183,6 @@ export default {
   border-color: rgba(62, 150, 97, 0.95);
 }
 .login-page {
-
-/* Chrome 10-25, Safari 5.1-6 */
   width: 100%;
 }
 .card-body {
@@ -287,13 +287,12 @@ a.btn.btn1.btn-primary:hover {
   justify-content: center;
   flex-wrap: wrap;
   white-space: nowrap;
-  margin-top: 40px;
 }
 .plantas span {
   font-family: "Roboto", sans-serif;
   font-size: 1.7rem;
   color: black;
-  text-align: center;
+  margin-top: 10%;
 }
 .buttons {
   display: flex;
@@ -327,7 +326,7 @@ a.btn.btn1.btn-primary:hover {
     flex-wrap: wrap;
     margin-left: 0.2%;
   }
-  .card{
+  .card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -338,7 +337,7 @@ a.btn.btn1.btn-primary:hover {
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
   }
-  
+
   .imgperfil {
     margin-left: 25%;
   }
@@ -421,12 +420,9 @@ a.btn.btn1.btn-primary:hover {
     width: 250px;
     padding: 5%;
   }
-  .card.titlep.mb-1{
+  .card.titlep.mb-1 {
     height: 250px;
     width: 850px;
-  
+  }
 }
-
-}
-
 </style>
