@@ -140,7 +140,7 @@
           <br />
         </div>
       </b-col>
-      <b-button class="button">FINALIZAR</b-button>
+      <b-button class="button" @click="patchPedido">FINALIZAR</b-button>
     </b-row>
   </b-container>
 </template>
@@ -165,15 +165,10 @@ export default {
         usuario: 0,
       },
       pedido: {
-        valor: "",
         cpf: "",
         rg: "",
         endereco: "",
         complemento: "",
-        boleto1: null,
-        cartao1: null,
-        pix: null,
-        usuario: 0,
       },
     };
   },
@@ -185,6 +180,10 @@ export default {
     },
     clicar() {
       this.data.cartão = !this.data.cartão;
+    },
+
+    async patchPedido() {
+      this.pedidos = await this.$patch(`compras/9/`, this.pedido);
     },
   },
   computed: {
@@ -198,7 +197,6 @@ export default {
 body {
   background-color: rgba(255, 255, 255, 0.95);
 }
-
 
 .title {
   font-family: "Jomolhari";
@@ -497,36 +495,36 @@ ul.dropdown-menu.show {
     width: 310px;
   }
   .buttoncartao {
-  justify-content: center;
-  border: 0;
-  border-radius: 6px;
-  font-weight: bold;
-  font-style: normal;
-  font-family: "Roboto", sans-serif;
-  color: #fff;
-  background: rgba(62, 150, 97, 0.95);
-  text-transform: uppercase;
-  cursor: pointer;
-  outline: 0;
-  box-sizing: border-box;
-  transition-property: all;
-  transition-duration: 0.3s;
-  text-decoration: none;
-  font-size: 15px;
-  margin: 0 0 0 22%;
-  width: 190px;
-  height: 50px;
+    justify-content: center;
+    border: 0;
+    border-radius: 6px;
+    font-weight: bold;
+    font-style: normal;
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+    background: rgba(62, 150, 97, 0.95);
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: 0;
+    box-sizing: border-box;
+    transition-property: all;
+    transition-duration: 0.3s;
+    text-decoration: none;
+    font-size: 15px;
+    margin: 0 0 0 22%;
+    width: 190px;
+    height: 50px;
   }
   .imprimirBoleto {
-  margin-left: 85px;
-  font-weight: bold;
-  font-style: normal;
-  font-family: "Roboto", sans-serif;
-  cursor: pointer;
+    margin-left: 85px;
+    font-weight: bold;
+    font-style: normal;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
   }
   .boleto img {
-  height: 200px;
-  width: 200px;
+    height: 200px;
+    width: 200px;
   }
 }
 </style>

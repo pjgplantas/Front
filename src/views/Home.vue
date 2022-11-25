@@ -44,7 +44,10 @@
                   variant="primary"
                   >Ir para a planta</b-button
                 >
-                <b-button class="btn2" @click="patchCarrinho(planta.id)">
+                <b-button
+                  class="btn2"
+                  @click="patchCarrinho == null ? postCarrinho : patchCarrinho"
+                >
                   <b-icon icon="cart2" class="b-0"></b-icon>
                   ></b-button
                 >

@@ -23,10 +23,10 @@
               "
               class="imgcarrinho"
             />
-            <div class="NomeP"></div>
+            <div class="NomeP">{{ compras.id }}</div>
             <div class="contentCart">
-              <div class="PreçoP">{{ compras.total }}</div>
-              <div class="QuantidadeP">{{ compras.quantidade }}</div>
+              <div class="PreçoP"></div>
+              <div class="QuantidadeP">{{ compras.usuario }}</div>
             </div>
             <hr class="hrc" />
             <div>
@@ -87,7 +87,8 @@ export default {
     ...mapActions("auth", ["logout"]),
 
     async getCarrinho() {
-      this.compras = await this.$get("compras/9/");
+      this.compras = await this.$get(`compras/9/`);
+      console.log(this.compras);
     },
   },
   computed: {
