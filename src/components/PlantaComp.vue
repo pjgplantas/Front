@@ -79,6 +79,7 @@ export default {
   },
   async created() {
     this.getImagens();
+    this.getPlanta();
   },
   methods: {
     async deletarPlanta() {
@@ -122,6 +123,13 @@ export default {
         `http://localhost:8000/plantas/${this.planta.id}/`,
         this.formAlterar
       );
+    },
+    async getPlanta() {
+      this.formAlterar.nome = this.planta.nome;
+      this.formAlterar.preco = this.planta.preco;
+      this.formAlterar.tipo_planta = this.planta.tipo_planta;
+      this.formAlterar.desc = this.planta.desc;
+      await this.$get(`plantas/${this.planta.id}/`, this.formAlterar);
     },
   },
 };

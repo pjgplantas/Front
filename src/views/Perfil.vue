@@ -69,7 +69,12 @@ export default {
   name: "perfil",
   data() {
     return {
-      form: {},
+      form: {
+        username: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+      },
       show: true,
     };
   },
@@ -87,15 +92,19 @@ export default {
       }
     },
     async getPerfil() {
+      this.form.username = this.user.username;
+      this.form.first_name = this.user.first_name;
+      this.form.last_name = this.user.last_name;
+      this.form.email = this.user.email;
       try {
-        await this.$get(`/auth/${this.user.id}/`, this.form);
+        await this.$get(`/auth/${this.user.id}/`);
       } catch {
         alert("erro");
       }
     },
   },
   computed: {
-    ...mapState("auth", ["loggedIn", "user", "id"]),
+    ...mapState("auth", ["loggedIn", "user"]),
   },
 };
 </script>
