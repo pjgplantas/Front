@@ -135,6 +135,7 @@ export default {
       try {
         await this.$post("auth/", this.form);
         this.$router.push({ name: "Login" });
+        alert("Cadastro feito com sucesso");
       } catch {
         alert("Erro");
       }

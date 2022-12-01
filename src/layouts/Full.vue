@@ -14,19 +14,23 @@
               >Planta</b-nav-item
             >
           </b-navbar-nav>
-          <b-nav-item-dropdown class="Carrinho" text="Carrinho">
+          <b-nav-item-dropdown class="Carrinho" text="Carrinho" v-for="compra in compras"
+            :key="compra.id">
             <img
-              src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
+              :src="compras[0].itens[0].planta.imagem.file"
               alt=""
               width="200px"
               height="130px
               "
               class="imgcarrinho"
             />
-            <div class="NomeP">{{ compras.id }}</div>
+            <div class="NomeP">{{ compras[0].itens[0].planta.nome }}</div>
             <div class="contentCart">
-              <div class="PreçoP"></div>
-              <div class="QuantidadeP">{{ compras.usuario }}</div>
+              <div class="PreçoP">R$ {{ compras[0].itens[0].total }}</div>
+              <div class="QuantidadeP">
+                Quantidade:
+                {{ compras[0].itens[0].quantidade }}
+              </div>
             </div>
             <hr class="hrc" />
             <div>
@@ -87,8 +91,8 @@ export default {
     ...mapActions("auth", ["logout"]),
 
     async getCarrinho() {
-      this.compras = await this.$get(`compras/9/`);
-      console.log(this.compras);
+      let compras = await this.$get(`compras/?usuario=${this.user.id}`);
+      this.compras = compras;
     },
   },
   computed: {
