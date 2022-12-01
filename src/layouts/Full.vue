@@ -26,7 +26,7 @@
             />
             <div class="NomeP">{{ compras[0].itens[0].planta.nome }}</div>
             <div class="contentCart">
-              <div class="PreçoP">R$ {{ compras[0].itens[0].total }}</div>
+              <div class="PreçoP">R$ {{ compras[0].itens[0].total }},00</div>
               <div class="QuantidadeP">
                 Quantidade:
                 {{ compras[0].itens[0].quantidade }}
@@ -182,7 +182,7 @@ ul.dropdown-menu.show {
   font-size: 18px;
   font-weight: lighter;
   font-family: "Times New Roman", Times, serif;
-  margin-left: 1vw;
+  margin-left: 0.3vw;
   margin-top: 3%;
   color: #099d78;
 }
@@ -190,7 +190,7 @@ ul.dropdown-menu.show {
   font-size: 18px;
   font-weight: lighter;
   font-family: "Times New Roman", Times, serif;
-  margin-left: 15%;
+  margin-left: 8%;
   margin-top: 3%;
   color: #099d78;
 }
