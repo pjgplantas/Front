@@ -106,7 +106,7 @@
           </div>
         </b-form>
       </b-col>
-      <b-col>
+      <b-col class="col2">
         <b-form class="formCadastro" @submit.prevent="login" v-if="show">
           <div class="superuser">
             <h2>Cadastrar Pix</h2>
@@ -151,7 +151,7 @@
             "
             placeholder="Insira seu email"
           ></b-form-input>
-          <div class="emsen" style="white-space: nowrap">Usuario:</div>
+
           <div class="buttons">
             <b-button class="btnCadastro" type="submit" @click="pixRegister"
               >Cadastrar</b-button
