@@ -84,7 +84,7 @@ export default {
         itens: [{ planta, quantidade: 1 }],
       };
       let compras = await this.$get(`compras/?usuario=${this.user.id}`);
-      console.log(compras[1].id)
+      console.log(compras[0].id);
       await this.$patch(`compras/${compras[1].id}/`, carrinho);
     },
     async postCarrinho(planta) {

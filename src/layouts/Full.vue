@@ -9,13 +9,20 @@
           <b-navbar-nav>
             <b-nav-item href="/">Home</b-nav-item>
           </b-navbar-nav>
+          <b-navbar-nav v-if="user.is_superuser === true">
+            <b-nav-item to="/outros">Outros</b-nav-item>
+          </b-navbar-nav>
           <b-navbar-nav v-model="superuser">
             <b-nav-item href="/planta" v-if="user.is_superuser === true"
               >Planta</b-nav-item
             >
           </b-navbar-nav>
-          <b-nav-item-dropdown class="Carrinho" text="Carrinho" v-for="compra in compras"
-            :key="compra.id">
+          <b-nav-item-dropdown
+            class="Carrinho"
+            text="Carrinho"
+            v-for="compra in compras"
+            :key="compra.id"
+          >
             <img
               :src="compras[0].itens[0].planta.imagem.file"
               alt=""

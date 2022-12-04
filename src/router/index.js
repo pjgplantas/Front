@@ -48,6 +48,12 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/Planta.vue"),
       },
+      {
+        path: "/outros",
+        name: "/outros",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/Outros.vue"),
+      },
     ],
   },
   {
