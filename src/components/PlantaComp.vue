@@ -3,7 +3,7 @@
     img-alt="Image"
     img-top
     tag="article"
-    style="height: 250px; width: 850px"
+    style="height: 450px; width: 850px"
     class="titlep mb-1"
   >
     <div class="titulo5">{{ planta.nome }} - ID: {{ planta.id }}</div>
@@ -55,6 +55,22 @@
         <br />
         <div>Imagem:</div>
         <input @change="uploadFile" type="file" ref="file" />
+        <div>Comentarios:</div>
+        <div
+          class="Respostas"
+          v-for="comentario in planta.comentarios"
+          :key="comentario.id"
+        >
+          <h4>{{ comentario.usuario }} : {{ comentario.texto }}</h4>
+          <button
+            @click.prevent="
+              this.user.id = comentario.usuario.id;
+              deleteComentarios;
+            "
+          >
+            excluir
+          </button>
+        </div>
       </b-form>
     </div>
   </b-card>
@@ -62,6 +78,7 @@
 
 <script>
 import axios from "axios";
+import { mapState } from "vuex";
 export default {
   props: ["planta"],
   data() {
@@ -72,6 +89,7 @@ export default {
         nome: "",
         desc: "",
         imagem_attachment_key: "",
+        comentarios: "",
       },
       imagem: {},
       imagens: [],
@@ -91,6 +109,7 @@ export default {
         alert("Erro");
       }
     },
+
     async alteraPlanta() {
       try {
         this.formAlterar.planta = this.planta.id;
@@ -99,6 +118,10 @@ export default {
       } catch {
         alert("Erro");
       }
+    },
+
+    async getComentarios() {
+      this.comentarios = await this.$get("comentarios/");
     },
     getPlantaUrl(id) {
       return `/produto/${id}`;
@@ -129,10 +152,45 @@ export default {
       this.formAlterar.preco = this.planta.preco;
       this.formAlterar.tipo_planta = this.planta.tipo_planta;
       this.formAlterar.desc = this.planta.desc;
+      this.formAlterar.comentarios = this.planta.comentarios;
       await this.$get(`plantas/${this.planta.id}/`, this.formAlterar);
+    },
+    async deleteComentarios() {
+      try {
+        await this.$delete(`/comentarios/${this.comentarios.id}/`, this.planta);
+        alert("Comentario removido com sucesso!");
+      } catch {
+        alert("Erro");
+      }
+    },
+    computed: {
+      ...mapState("auth", ["loggedIn", "user", "id"]),
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.formulario {
+  height: 1000px;
+}
+.Respostas {
+  color: #000000;
+  display: flex;
+  font-size: 20px;
+  margin: 4% 0 0 1%;
+  padding-top: 10px;
+  background: rgba(228, 255, 239, 0.95);
+  width: 80vh;
+  height: 50px;
+  white-space: nowrap;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+</style>

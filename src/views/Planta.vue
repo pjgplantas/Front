@@ -77,6 +77,7 @@ export default {
         nome: "",
         desc: "",
         imagem_attachment_key: "",
+        comentarios: "",
       },
 
       imagem: {},
