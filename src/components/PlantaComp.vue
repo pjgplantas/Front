@@ -137,13 +137,13 @@ export default {
       formData.append("file", this.Images);
       const headers = { "Content-Type": "multipart/form-data" };
       const { data } = await axios.post(
-        "http://localhost:8000/api/media/imagesUpload/",
+        "http://jaummonster.pythonanywhere.com/api/media/imagesUpload/",
         formData,
         { headers }
       );
       this.formAlterar.imagem_attachment_key = data.attachment_key;
       await axios.put(
-        `http://localhost:8000/plantas/${this.planta.id}/`,
+        `http:/jaummonster.pythonanywhere.com/plantas/${this.planta.id}/`,
         this.formAlterar
       );
     },
