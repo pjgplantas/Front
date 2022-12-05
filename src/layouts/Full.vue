@@ -19,19 +19,19 @@
           </b-navbar-nav>
           <b-nav-item-dropdown class="Carrinho" text="Carrinho">
             <img
-              :src="compras[0].itens[0].planta.imagem.file"
+              
               alt=""
               width="200px"
               height="130px
               "
               class="imgcarrinho"
             />
-            <div class="NomeP">{{ compras[0].itens[0].planta.nome }}</div>
+            <div class="NomeP"></div>
             <div class="contentCart">
-              <div class="PreçoP">R$ {{ compras[0].itens[0].total }},00</div>
+              <div class="PreçoP">R$ ,00</div>
               <div class="QuantidadeP">
                 Quantidade:
-                {{ compras[0].itens[0].quantidade }}
+                
               </div>
             </div>
             <hr class="hrc" />
