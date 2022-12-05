@@ -133,12 +133,12 @@ export default {
       formData.append("file", this.Images);
       const headers = { "Content-Type": "multipart/form-data" };
       const { data } = await axios.post(
-        "http://localhost:8000/api/media/imagesUpload/",
+        "https://jaummonster.pythonanywhere.com/api/media/imagesUpload/",
         formData,
         { headers }
       );
       this.form.imagem_attachment_key = data.attachment_key;
-      await axios.post("http://localhost:8000/plantas/", this.form);
+      await axios.post("https://jaummonster.pythonanywhere.com/plantas/", this.form);
       alert("Planta adicionada com sucesso!");
       this.$router.push({ name: "Home" });
     },

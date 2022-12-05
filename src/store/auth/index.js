@@ -18,7 +18,7 @@ export const auth ={
     },
     actions: {
         async login( { commit}, user ) {
-            const userData = await axios.post("http://localhost:8000/token/", user);
+            const userData = await axios.post("https://jaummonster.pythonanywhere.com/token/", user);
             // console.log(userData)
             commit('setLoginInfo' , userData.data)
         },

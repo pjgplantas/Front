@@ -92,10 +92,6 @@ export default {
   methods: {
     ...mapActions("auth", ["logout"]),
 
-    async getCarrinho() {
-      let compras = await this.$get(`compras/?usuario=${this.user.id}`);
-      this.compras = compras;
-    },
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user", "id"]),
