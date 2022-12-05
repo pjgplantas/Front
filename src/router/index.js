@@ -40,13 +40,13 @@ const routes = [
         path: "/perfil",
         name: "/perfil",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Perfil.vue"),
+          import("../views/Perfil.vue"),
       },
       {
         path: "/planta",
         name: "/planta",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Planta.vue"),
+          import("../views/Planta.vue"),
       },
       {
         path: "/outros",
