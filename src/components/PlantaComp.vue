@@ -62,14 +62,6 @@
           :key="comentario.id"
         >
           <h4>{{ comentario.usuario }} : {{ comentario.texto }}</h4>
-          <button
-            @click.prevent="
-              this.user.id = comentario.usuario.id;
-              deleteComentarios;
-            "
-          >
-            excluir
-          </button>
         </div>
       </b-form>
     </div>
