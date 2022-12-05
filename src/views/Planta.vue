@@ -117,7 +117,7 @@ export default {
       formData.append("description", this.Desc);
       const headers = { "Content-Type": "multipart/form-data" };
       axios
-        .post("http://jaummonster.pythonanywhere.com/api/media/imagesUpload/", formData, {
+        .post("https://jaummonster.pythonanywhere.com/api/media/imagesUpload/", formData, {
           headers,
         })
         .then((res) => {
