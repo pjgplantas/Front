@@ -17,12 +17,7 @@
               >Planta</b-nav-item
             >
           </b-navbar-nav>
-          <b-nav-item-dropdown
-            class="Carrinho"
-            text="Carrinho"
-            v-for="compra in compras"
-            :key="compra.id"
-          >
+          <b-nav-item-dropdown class="Carrinho" text="Carrinho">
             <img
               :src="compras[0].itens[0].planta.imagem.file"
               alt=""

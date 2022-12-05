@@ -123,6 +123,7 @@ export default {
         username: "",
         last_name: "",
         first_name: "",
+        is_superuser: false,
       },
       show: true,
     };
