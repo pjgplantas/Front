@@ -52,7 +52,7 @@ const routes = [
         path: "/outros",
         name: "/outros",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Outros.vue"),
+          import("../views/Outros.vue"),
       },
     ],
   },
@@ -75,7 +75,7 @@ const routes = [
           auth: false,
         },
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Cadastro.vue"),
+          import("../views/Cadastro.vue"),
       },
     ],
   },
