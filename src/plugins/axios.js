@@ -9,7 +9,7 @@ Vue.use(VueAxios, {
   // example config for axios instance
   config: {
     // axios instance config
-    baseURL: "http://localhost:8000/", // api URL
+    baseURL: "https://jaummonster.pythonanywhere.com/", // api URL
   },
   interceptors: {
     // this function shows how to add Authorization header to requests
