@@ -67,7 +67,7 @@ import { mapState } from "vuex";
 import PlantaComp from "@/components/PlantaComp.vue";
 import axios from "axios";
 export default {
-  name: "perfil",
+  name: "planta",
   components: { PlantaComp },
   data() {
     return {
@@ -117,7 +117,7 @@ export default {
       formData.append("description", this.Desc);
       const headers = { "Content-Type": "multipart/form-data" };
       axios
-        .post("http://127.0.0.1:8000/api/media/imagesUpload/", formData, {
+        .post("http://jaummonster.pythonanywhere.com/api/media/imagesUpload/", formData, {
           headers,
         })
         .then((res) => {
