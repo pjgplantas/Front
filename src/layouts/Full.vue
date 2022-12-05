@@ -82,12 +82,7 @@ export default {
   data() {
     return {
       superuser: "",
-      compra: {},
-      compras: [],
     };
-  },
-  async created() {
-    await this.getCarrinho();
   },
   methods: {
     ...mapActions("auth", ["logout"]),
