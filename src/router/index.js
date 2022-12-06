@@ -22,19 +22,19 @@ const routes = [
         path: "/produto/:id",
         name: "/produto",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Produto.vue"),
+          import("../views/Produto.vue"),
       },
       {
         path: "/dadoscompra",
         name: "/dadoscompra",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/DadosCompra.vue"),
+          import("../views/DadosCompra.vue"),
       },
       {
         path: "/boleto",
         name: "/boleto",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Boleto.vue"),
+          import("../views/Boleto.vue"),
       },
       {
         path: "/perfil",

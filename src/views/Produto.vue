@@ -220,8 +220,9 @@ h4 {
 }
 .col1 img {
   height: 85%;
+  width: 90%;
   border-radius: 5px 0px 0px 5px;
-  margin: 5% 0 0 20%;
+  margin: 10% 0 0 10%;
 }
 #TotalValue {
   font-size: 40px;

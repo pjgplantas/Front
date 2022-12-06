@@ -193,7 +193,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 body {
   background-color: rgba(255, 255, 255, 0.95);
 }
