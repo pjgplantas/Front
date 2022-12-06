@@ -101,7 +101,7 @@ export default {
 
     async adicionarPlanta() {
       try {
-        await this.$post(`/plantas/`, this.form);
+        await this.$post("/plantas/", this.form);
         alert("Planta adicionada com sucesso!");
       } catch {
         alert("Erro");
@@ -117,9 +117,13 @@ export default {
       formData.append("description", this.Desc);
       const headers = { "Content-Type": "multipart/form-data" };
       axios
-        .post("https://jaummonster.pythonanywhere.com/api/media/imagesUpload/", formData, {
-          headers,
-        })
+        .post(
+          "https://jaummonster.pythonanywhere.com/api/media/imagesUpload/",
+          formData,
+          {
+            headers,
+          }
+        )
         .then((res) => {
           res.data.files; // binary representation of the file
           res.status; // HTTP status
@@ -138,7 +142,10 @@ export default {
         { headers }
       );
       this.form.imagem_attachment_key = data.attachment_key;
-      await axios.post("https://jaummonster.pythonanywhere.com/plantas/", this.form);
+      await axios.post(
+        "https://jaummonster.pythonanywhere.com/plantas/",
+        this.form
+      );
       alert("Planta adicionada com sucesso!");
       this.$router.push({ name: "Home" });
     },
