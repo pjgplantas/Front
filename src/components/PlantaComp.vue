@@ -135,6 +135,7 @@ export default {
       );
       this.formAlterar.imagem_attachment_key = data.attachment_key;
       await this.$put(`plantas/${this.planta.id}/`, this.formAlterar);
+      this.$router.push({ name: "Home" });
     },
     async getPlanta() {
       this.formAlterar.nome = this.planta.nome;
