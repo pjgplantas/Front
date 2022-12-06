@@ -150,7 +150,6 @@ export default {
   padding-bottom: 30px;
 }
 .col1 {
-  border-radius: 4px;
   padding: 1px;
   display: flex;
   width: 50%;
@@ -158,7 +157,6 @@ export default {
   height: 80vh;
 }
 .col2 {
-  border-radius: 4px;
   display: flex;
   flex-direction: column;
   background: white;

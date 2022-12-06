@@ -1,7 +1,7 @@
 <template>
   <b-container class="login-page" fluid>
     <b-row class="rowPerfil">
-      <b-col>
+      <b-col class="col1">
         <b-form class="formCadastro" @submit.prevent="login" v-if="show">
           <div class="superuser">
             <h2>Cadastro superuser</h2>
@@ -106,6 +106,7 @@
           </div>
         </b-form>
       </b-col>
+      <hr class="HrForm" />
       <b-col class="col2">
         <b-form class="formCadastro" @submit.prevent="login" v-if="show">
           <div class="superuser">
@@ -218,19 +219,36 @@ export default {
 .formp {
   border-radius: 2px;
   padding: 50px;
-  margin-left: 60px;
+  margin-left: 80px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
+.HrForm {
+  border: 1px solid #808080;
+  height: 70vh;
+  margin-right: 10%;
+  margin-top: 50px;
+}
+.col1 {
+  margin-left: 10%;
+}
 .superuser {
   margin-top: 30px;
-  padding: 10px;
+  padding: 30px;
   text-align: center;
+}
+.superuser h2 {
+  font-weight: 500;
+  font-size: 40px;
+  color: #05701c;
+  padding: 30px;
+  font-style: italic;
 }
 .rowPerfil {
   width: 100%;
   margin-left: 1px;
+  height: 90vh;
   background-color: white;
 }
 .formularioAlterar {
@@ -246,6 +264,28 @@ export default {
 
 .login-page {
   width: 100%;
+  height: 1250px;
+  background: #09b388; /* fallback for old browsers */
+  background: -webkit-(
+    to top,
+    #001510,
+    #00bf8f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+}
+.btnCadastro {
+  margin-top: 30px;
+  background: -webkit-(
+    to top,
+    #086a63,
+    #086a52
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: #086a52; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: 0;
+  padding: 10px;
+  width: 130px;
+  font-size: 21px;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
 }
 
 @media (max-width: 844px) {
