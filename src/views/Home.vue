@@ -193,7 +193,6 @@ a.btn.btn1.btn-primary:hover {
   color: #328051a1; /* fallback for old browsers */
   color: -webkit-(to top, #001510, #00bf8f); /* Chrome 10-25, Safari 5.1-6 */
   color: #328051a1; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  opacity: 100%;
   font-family: "Josefin Sans", sans-serif;
   text-align: left;
   max-width: 306px;
