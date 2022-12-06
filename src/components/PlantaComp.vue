@@ -134,7 +134,7 @@ export default {
         { headers }
       );
       this.formAlterar.imagem_attachment_key = data.attachment_key;
-      await this.$put(`/plantas/${this.planta.id}/`, this.formAlterar);
+      await this.$put(`plantas/${this.planta.id}/`, this.formAlterar);
     },
     async getPlanta() {
       this.formAlterar.nome = this.planta.nome;

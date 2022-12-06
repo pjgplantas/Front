@@ -183,7 +183,7 @@ export default {
     },
 
     async patchPedido() {
-      this.pedidos = await this.$patch(`compras/9/`, this.pedido);
+      this.pedidos = await this.$patch("compras/9/", this.pedido);
     },
   },
   computed: {
