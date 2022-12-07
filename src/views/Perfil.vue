@@ -159,7 +159,7 @@ export default {
 
 .EmailCliente {
   color: black;
-  opacity: 50%;
+  opacity: 90%;
   font-size: 19px;
   margin-left: 40px;
 }

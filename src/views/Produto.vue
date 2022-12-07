@@ -48,10 +48,7 @@
           placeholder="Digite seu comentario"
         >
         </b-form-textarea>
-        <b-button
-          class="BotaoComentario"
-          type="submit"
-          @click.prevent="postComentarios"
+        <b-button class="BotaoComentario" type="submit" @click="postComentarios"
           >Comentar</b-button
         >
       </div>
@@ -91,7 +88,7 @@ export default {
       this.comentario.usuario = this.user.id;
       this.comentario.planta = this.planta.id;
       this.comentarios = await this.$post("comentarios/", this.comentario);
-      await this.getComentarios();
+      await this.getPlanta(this.planta.id);
     },
     async deleteComentarios() {
       try {
@@ -113,7 +110,6 @@ export default {
     ...mapState("auth", ["loggedIn", "user", "id"]),
   },
   async created() {
-    await this.getComentarios();
     await this.getPlanta(this.$route.params.id);
   },
 };
@@ -218,9 +214,9 @@ h4 {
 }
 .col1 img {
   height: 85%;
-  width: 90%;
+  width: 85%;
   border-radius: 5px 0px 0px 5px;
-  margin: 10% 0 0 10%;
+  margin: 5% 0 0 2%;
 }
 #TotalValue {
   font-size: 40px;
