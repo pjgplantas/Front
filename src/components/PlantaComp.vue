@@ -3,7 +3,7 @@
     img-alt="Image"
     img-top
     tag="article"
-    style="height: 450px; width: 850px"
+    style="height: 600px; width: 850px"
     class="titlep mb-1"
   >
     <div class="titulo5">{{ planta.nome }} - ID: {{ planta.id }}</div>
