@@ -229,7 +229,7 @@ input:-internal-autofill-selected {
   }
   .cform {
     width: 340px;
-    margin: -7% 0% 0 15px;
+    margin: 0% 0% 0px -11%
   }
   .form-control {
     margin: 3% 5% 0 0%;
@@ -265,6 +265,7 @@ input:-internal-autofill-selected {
   .logo img {
     width: 200px;
     height: 200px;
+    margin: 0 0 0 -30px;
   }
 
   .logo {

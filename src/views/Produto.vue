@@ -2,10 +2,7 @@
   <b-container fluid class="produto">
     <b-row class="row">
       <b-col class="col1">
-        <img
-          src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
-          alt=""
-        />
+        <img :src="planta.imagem.url" alt="" />
       </b-col>
       <b-col class="col2">
         <h1 id="h1Nome">
@@ -51,20 +48,16 @@
           placeholder="Digite seu comentario"
         >
         </b-form-textarea>
-        <b-button
-          class="BotaoComentario"
-          type="submit"
-          @click.prevent="postComentarios"
+        <b-button class="BotaoComentario" type="submit" @click="postComentarios"
           >Comentar</b-button
         >
       </div>
       <div
         class="Respostas"
-        v-for="comentario in comentarios"
+        v-for="comentario in planta.comentarios"
         :key="comentario.id"
       >
-        {{ comentario.usuario.username }} :
-        {{ comentario.texto }}
+        {{ comentario.usuario }} : {{ comentario.texto }}
       </div>
     </div>
   </b-container>
@@ -79,35 +72,45 @@ export default {
       value: 1,
       //
       comentario: {
-        planta: 0,
-        usuario: 0,
         texto: "",
+        usuario: 0,
+        planta: 0,
       },
       planta: {},
       texto: {},
     };
-  },
-  async created() {
-    await this.getComentarios();
-    console.log("oioioiio");
-    console.log(this.$route.params.id);
-    await this.getPlanta(this.$route.params.id);
   },
   methods: {
     async getComentarios() {
       this.comentarios = await this.$get("comentarios/");
     },
     async postComentarios() {
+      this.comentario.usuario = this.user.id;
+      this.comentario.planta = this.planta.id;
       this.comentarios = await this.$post("comentarios/", this.comentario);
+      await this.getPlanta(this.planta.id);
+    },
+    async deleteComentarios() {
+      try {
+        await this.$delete(
+          `/plantas/${this.planta.id}/comentarios`,
+          this.comentario
+        );
+        alert("Planta removida com sucesso!");
+      } catch {
+        alert("Erro");
+      }
     },
     async getPlanta(id) {
       const res = await this.$get(`plantas/${id}/`);
-      console.log(res);
       this.planta = res;
     },
   },
   computed: {
-    ...mapState("auth", ["loggedIn", "user"]),
+    ...mapState("auth", ["loggedIn", "user", "id"]),
+  },
+  async created() {
+    await this.getPlanta(this.$route.params.id);
   },
 };
 </script>
@@ -143,7 +146,6 @@ export default {
   padding-bottom: 30px;
 }
 .col1 {
-  border-radius: 4px;
   padding: 1px;
   display: flex;
   width: 50%;
@@ -151,7 +153,6 @@ export default {
   height: 80vh;
 }
 .col2 {
-  border-radius: 4px;
   display: flex;
   flex-direction: column;
   background: white;
@@ -211,9 +212,11 @@ h4 {
   opacity: 80%;
   color: white;
 }
-img {
+.col1 img {
   height: 85%;
+  width: 85%;
   border-radius: 5px 0px 0px 5px;
+  margin: 5% 0 0 2%;
 }
 #TotalValue {
   font-size: 40px;
@@ -265,6 +268,9 @@ img {
   font-weight: 500;
   font-style: normal;
   font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .hrlay {

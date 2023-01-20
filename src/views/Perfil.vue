@@ -1,84 +1,66 @@
 <template>
-  <div>
-    <b-container class="login-page" fluid>
-      <b-row>
+  <b-container class="login-page" fluid>
+    <b-row class="rowPerfil">
+      <b-col>
         <b-col>
-          <b-col>
-            <b-form class="formp" v-if="show">
-              <div class="parte1">
-                <div class="imgperfil">
-                  <img
-                    class="rounded-circle mt-5"
-                    width="150px"
-                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-                  />
-                </div>
-                <div class="NomeCliente">
-                  {{ user.username }} -- {{ user.id }}
-                </div>
-                <div class="EmailCliente">{{ user.email }}</div>
+          <b-form class="formp" v-if="show">
+            <div class="parte1">
+              <div class="imgperfil">
+                <img
+                  class="rounded-circle mt-5"
+                  width="150px"
+                  src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                />
               </div>
-              <div class="parte2"><hr class="HrForm" /></div>
-              <div class="parte3">
-                <div class="TituloPerfil">Configurações do Perfil</div>
-                <div class="divs">Primeiro Nome</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input id="input-2" v-model="form.first_name" required>
-                  </b-form-input>
-                </b-form-group>
-                <div class="divs">Sobrenome:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="form.last_name"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <div class="divs">Email:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="form.email"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <div class="divs">Username:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="form.username"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <div class="divs">Senha:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="form.password"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <div class="divs">Confirmar Senha:</div>
-                <b-form-group id="input-group-2">
-                  <b-form-input
-                    id="input-2"
-                    v-model="form.password_confirmation"
-                    required
-                  ></b-form-input>
-                </b-form-group>
-                <b-button
-                  class="btnperfil"
-                  type="submit"
-                  @click.prevent="editarPerfil"
-                  >Alterar perfil</b-button
-                >
+              <div class="NomeCliente">
+                {{ user.username }}
               </div>
-            </b-form>
-          </b-col>
+              <div class="EmailCliente">{{ user.email }}</div>
+            </div>
+            <div class="parte2"><hr class="HrForm" /></div>
+            <div class="parte3">
+              <div class="TituloPerfil">Configurações do Perfil</div>
+              <div class="divs">Primeiro Nome</div>
+              <b-form-group id="input-group-2">
+                <b-form-input id="input-2" v-model="form.first_name" required>
+                </b-form-input>
+              </b-form-group>
+              <div class="divs">Sobrenome:</div>
+              <b-form-group id="input-group-2">
+                <b-form-input
+                  id="input-2"
+                  v-model="form.last_name"
+                  required
+                ></b-form-input>
+              </b-form-group>
+              <div class="divs">Username:</div>
+              <b-form-group id="input-group-2">
+                <b-form-input
+                  id="input-2"
+                  v-model="form.username"
+                  required
+                ></b-form-input>
+              </b-form-group>
+              <div class="divs">Email:</div>
+              <b-form-group id="input-group-2">
+                <b-form-input
+                  id="input-2"
+                  v-model="form.email"
+                  required
+                ></b-form-input>
+              </b-form-group>
+              <b-button
+                class="btnperfil"
+                type="submit"
+                @click.prevent="editarPerfil"
+                >Alterar perfil</b-button
+              >
+            </div>
+          </b-form>
         </b-col>
-      </b-row>
-    </b-container>
-  </div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -88,12 +70,10 @@ export default {
   data() {
     return {
       form: {
-        email: "",
         username: "",
-        last_name: "",
         first_name: "",
-        password: "",
-        password_confirmation: "",
+        last_name: "",
+        email: "",
       },
       show: true,
     };
@@ -102,15 +82,24 @@ export default {
     await this.getPerfil();
   },
   methods: {
-    async getPerfil() {
-      const data = await this.$get(`/auth/${this.user.id}/`);
-      this.form = data;
-    },
     async editarPerfil() {
       try {
-        await this.$p(`/auth/${this.user.id}/`, this.form);
+        await this.$patch(`/auth/${this.user.id}/`, this.form);
+        alert("Perfil alterado com sucesso!");
+        this.$router.push({ name: "Login" });
       } catch {
         alert("Erro");
+      }
+    },
+    async getPerfil() {
+      this.form.username = this.user.username;
+      this.form.first_name = this.user.first_name;
+      this.form.last_name = this.user.last_name;
+      this.form.email = this.user.email;
+      try {
+        await this.$get(`/auth/${this.user.id}/`);
+      } catch {
+        alert("erro");
       }
     },
   },
@@ -126,17 +115,20 @@ export default {
 .imgperfil {
   display: flex;
   width: 150px;
-  margin-left: 12%;
+  margin-left: 7%;
 }
 
 .formp {
   border-radius: 2px;
   height: 90vh;
   width: 150vh;
-  margin-top: 2%;
+  margin-top: 3%;
   align-content: center;
   background-color: white;
   display: flex;
+}
+.rowPerfil {
+  margin: 0 0 0 10%;
 }
 .login-page {
   width: 1905px;
@@ -162,12 +154,14 @@ export default {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-weight: 600;
+  margin-left: 60px;
 }
 
 .EmailCliente {
   color: black;
-  opacity: 50%;
+  opacity: 90%;
   font-size: 19px;
+  margin-left: 40px;
 }
 .hr {
   margin-top: 0%;
@@ -175,6 +169,7 @@ export default {
 .HrForm {
   border: 1px solid #808080;
   height: 86vh;
+  margin-right: 40px;
 }
 
 .TituloPerfil {
@@ -207,10 +202,15 @@ export default {
   );
   border: 0;
   padding: 13px;
-  width: 150px;
+  width: 170px;
   font-size: 23px;
+  font-weight: bold;
   border-radius: 10px;
   margin: 5% 0 0 25%;
+  font-family: "Roboto", sans-serif;
+}
+.btnperfil:hover {
+  opacity: 80%;
 }
 
 @media (max-width: 844px) {
@@ -226,14 +226,14 @@ export default {
 
   .login-page {
     width: 390px;
-    height: 1230px;
+    height: 910px;
     padding: 0;
   }
   .formp {
     width: 370px;
     flex-direction: column;
-    height: 1200px;
-    margin-left: 0.4%;
+    height: 105vh;
+    margin-left: 2.5%;
   }
   .parte1 {
     width: 300px;
@@ -255,6 +255,7 @@ export default {
     height: 700px;
     margin-left: 30px;
     font-size: 10px;
+    margin-top: 11vh;
   }
   .Titulo2Perfil {
     font-size: 20px;
@@ -304,6 +305,22 @@ export default {
   }
   .TituloPerfil {
     font-size: 20px;
+  }
+  .btnperfil {
+    background: rgb(21, 213, 165);
+    background: linear-gradient(
+      7deg,
+      rgba(21, 213, 165, 1) 0%,
+      rgba(54, 131, 100, 1) 66%
+    );
+    border: 0;
+    padding: 13px;
+    width: 170px;
+    font-size: 23px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 9% 0 0 20%;
+    font-family: "Roboto", sans-serif;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="dprincipal">
     <b-navbar class="navpr" toggleable="lg" type="dark">
-      <b-navbar-brand id="navb" disabled> <h3>PJG</h3></b-navbar-brand>
+      <b-navbar-brand href="/" id="navb"> <h3>PJG</h3></b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
@@ -9,34 +9,31 @@
           <b-navbar-nav>
             <b-nav-item href="/">Home</b-nav-item>
           </b-navbar-nav>
+          <b-navbar-nav v-if="user.is_superuser === true">
+            <b-nav-item to="/outros">Outros</b-nav-item>
+          </b-navbar-nav>
+          <b-navbar-nav v-model="superuser">
+            <b-nav-item href="/planta" v-if="user.is_superuser === true"
+              >Planta</b-nav-item
+            >
+          </b-navbar-nav>
           <b-nav-item-dropdown class="Carrinho" text="Carrinho">
             <img
-              src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
+              
               alt=""
               width="200px"
               height="130px
               "
               class="imgcarrinho"
             />
-            <div class="NomeP">
-              Areca Bambu
-              <div class="PreçoP">Valor = 45,00</div>
+            <div class="NomeP"></div>
+            <div class="contentCart">
+              <div class="PreçoP">R$ ,00</div>
+              <div class="QuantidadeP">
+                Quantidade:
+                
+              </div>
             </div>
-            <br />
-            <hr class="hrc" />
-            <img
-              src="https://http2.mlstatic.com/D_NQ_NP_963647-MLB48382302651_112021-W.webp"
-              alt=""
-              width="200px"
-              height="130px
-              "
-              class="imgcarrinho"
-            />
-            <div class="NomeP">
-              Areca Bambu
-              <div class="PreçoP">Valor = 45,00</div>
-            </div>
-            <br />
             <hr class="hrc" />
             <div>
               <div class="TotalP">Total: 90,00</div>
@@ -45,7 +42,7 @@
               >
             </div>
           </b-nav-item-dropdown>
-          <b-navbar-nav>
+          <b-navbar-nav v-if="user.is_superuser === false">
             <b-nav-item to="/perfil">Perfil</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav>
@@ -82,32 +79,14 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
-  name: "perfil",
   data() {
     return {
-      form: {
-        email: "",
-        username: "",
-        last_name: "",
-        first_name: "",
-        password: "",
-        password_confirmation: "",
-      },
-      show: true,
+      superuser: "",
     };
-  },
-  async created() {
-    this.getPerfil();
   },
   methods: {
     ...mapActions("auth", ["logout"]),
 
-    async getPerfil() {
-      this.form = await this.$get("auth/");
-    },
-    getPerfilUrl(id) {
-      return `/perfil/${id}`;
-    },
   },
   computed: {
     ...mapState("auth", ["loggedIn", "user", "id"]),
@@ -174,33 +153,44 @@ ul.dropdown-menu.dropdown-menu-right.show {
 }
 ul.dropdown-menu.show {
   background-color: white;
-  height: 580px;
-  width: 220px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .imgcarrinho {
-  margin: 3% 0 0 2%;
+  margin: 3% 0 0 0%;
 }
 .NomeP {
   white-space: nowrap;
-  margin: 5% 0 0 3%;
+  margin-top: 1vh;
   font-weight: bold;
   font-size: 20px;
   font-style: italic;
   font-family: Times, serif;
   text-align: center;
   color: #099d78;
+  background-color: #fff;
 }
 .PreçoP {
   font-size: 18px;
   font-weight: lighter;
   font-family: "Times New Roman", Times, serif;
-  text-align: center;
+  margin-left: 0.3vw;
+  margin-top: 3%;
+  color: #099d78;
+}
+.QuantidadeP {
+  font-size: 18px;
+  font-weight: lighter;
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 8%;
+  margin-top: 3%;
+  color: #099d78;
 }
 .hrc {
   width: 170px;
   border: 1px solid black;
-  margin: 0 0 0 10%;
+  margin: 5% 0 0 7%;
 }
 .TotalP {
   font-weight: bold;
@@ -208,6 +198,10 @@ ul.dropdown-menu.show {
   font-family: "Times New Roman", Times, serif;
   text-align: center;
   margin-top: 1vh;
+}
+.contentCart {
+  display: flex;
+  flex-direction: row;
 }
 .ButtonP {
   padding: 10px;

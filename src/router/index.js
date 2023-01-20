@@ -22,31 +22,37 @@ const routes = [
         path: "/produto/:id",
         name: "/produto",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Produto.vue"),
+          import("../views/Produto.vue"),
       },
       {
         path: "/dadoscompra",
         name: "/dadoscompra",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/DadosCompra.vue"),
-      },
-      {
-        path: "/pix",
-        name: "/pix",
-        component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Pix.vue"),
+          import("../views/DadosCompra.vue"),
       },
       {
         path: "/boleto",
         name: "/boleto",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Boleto.vue"),
+          import("../views/Boleto.vue"),
       },
       {
         path: "/perfil",
         name: "/perfil",
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Perfil.vue"),
+          import("../views/Perfil.vue"),
+      },
+      {
+        path: "/planta",
+        name: "/planta",
+        component: () =>
+          import("../views/Planta.vue"),
+      },
+      {
+        path: "/outros",
+        name: "/outros",
+        component: () =>
+          import("../views/Outros.vue"),
       },
     ],
   },
@@ -69,7 +75,7 @@ const routes = [
           auth: false,
         },
         component: () =>
-          import(/* webpackChunkName: "about" */ "../views/Cadastro.vue"),
+          import("../views/Cadastro.vue"),
       },
     ],
   },

@@ -30,18 +30,26 @@
             v-for="planta in plantas"
             :key="planta.id"
           >
-            <div>
-              {{ planta.imagem }}
+            <div class="imagens">
+              <img :src="planta.imagem.url" class="imghome" />
             </div>
-            <hr class="hrH" />
-            <div class="titulo5">{{ planta.nome }}</div>
-            <b-card-text class="textop"> {{ planta.preco }} </b-card-text>
-            <b-button
-              class="btn1"
-              :to="getPlantaUrl(planta.id)"
-              variant="primary"
-              >Adicionar ao Carrinho</b-button
-            >
+            <div class="info">
+              <hr class="hrH" />
+              <div class="titulo5">{{ planta.nome }}</div>
+              <b-card-text class="textop"> {{ planta.preco }} </b-card-text>
+              <div class="buttons">
+                <b-button
+                  class="btn1"
+                  :to="getPlantaUrl(planta.id)"
+                  variant="primary"
+                  >Ir para a planta</b-button
+                >
+                <b-button class="btn2" @click="patchCarrinho(planta.id)">
+                  <b-icon icon="cart2" class="b-0"></b-icon>
+                  ></b-button
+                >
+              </div>
+            </div>
           </b-card>
         </b-col>
       </b-row>
@@ -54,13 +62,11 @@
 import { mapState } from "vuex";
 export default {
   name: "Planta",
-  computed: {
-    ...mapState("auth", ["loggedIn"]),
-  },
   data() {
     return {
       planta: {},
       plantas: [],
+      usuario: {},
     };
   },
   async created() {
@@ -73,6 +79,21 @@ export default {
     getPlantaUrl(id) {
       return `/produto/${id}`;
     },
+    async patchCarrinho(planta) {
+      const carrinho = {
+        itens: [{ planta, quantidade: 1 }],
+      };
+      await this.$patch(`compras/1/`, carrinho);
+    },
+    async postCarrinho(planta) {
+      const carrinho = {
+        itens: [{ planta, quantidade: 1 }],
+      };
+      await this.$post("compras/", carrinho);
+    },
+  },
+  computed: {
+    ...mapState("auth", ["loggedIn", "user", "id"]),
   },
 };
 </script>
@@ -80,11 +101,15 @@ export default {
 <style>
 .col {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
 }
 .container {
   padding-top: 50px;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 a.btn.btn1.btn-primary {
   background: #15d5a5;
@@ -93,7 +118,18 @@ a.btn.btn1.btn-primary {
   border: 0;
   padding: 10px;
   font-size: 17px;
-  margin: 10% 0 0 5%;
+  margin-right: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.btn2 {
+  background: #15d5a5;
+  background: linear-gradient(7deg, #1d583b 0%, #41a17b 66%);
+  border-radius: 5px;
+  border: 0;
+  padding: 15px;
+  font-size: 17px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   white-space: nowrap;
@@ -105,6 +141,14 @@ a.btn.btn1.btn-primary:hover {
   width: 300px;
   height: 300px;
 }
+.imghome {
+  height: auto;
+  width: 100%;
+}
+.imagens {
+  height: 70%;
+}
+
 .card {
   height: 300px;
   width: 300px;
@@ -149,7 +193,6 @@ a.btn.btn1.btn-primary:hover {
   color: #328051a1; /* fallback for old browsers */
   color: -webkit-(to top, #001510, #00bf8f); /* Chrome 10-25, Safari 5.1-6 */
   color: #328051a1; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  opacity: 100%;
   font-family: "Josefin Sans", sans-serif;
   text-align: left;
   max-width: 306px;
@@ -212,7 +255,7 @@ a.btn.btn1.btn-primary:hover {
   }
   .col {
     padding: 20px;
-    margin: 0px 8% -5px -50px;
+    margin: -6px 0% -7px -6px;
   }
   .card {
     margin-left: 50px;

@@ -119,7 +119,11 @@ export default {
       form: {
         email: "",
         password: "",
-        usuario: "",
+        password_confirmation: "",
+        username: "",
+        last_name: "",
+        first_name: "",
+        is_superuser: false,
       },
       show: true,
     };
@@ -132,13 +136,11 @@ export default {
       try {
         await this.$post("auth/", this.form);
         this.$router.push({ name: "Login" });
+        alert("Cadastro feito com sucesso");
       } catch {
         alert("Erro");
       }
     },
-    //   async getUsuario() {
-    //     this.usuario = await this.$get("auth/");
-    //   },
   },
 };
 </script>
@@ -147,27 +149,25 @@ export default {
 .logo img {
   width: 400px;
   height: 400px;
-  margin: 3% 0% 12vh 21vh;
 }
 .logo {
-  margin: 5% 0% 0% 55%;
+  margin: 1% 0% 0% 0%;
 }
 .loginPage {
   font-family: Jomolhari;
   height: 100vh;
   display: flex;
   padding: 0;
-  margin: 0 10% 0 0;
 }
 .formCadastro {
   background-color: white;
   border-radius: 8px;
-  margin: -1% -167% 0 0%;
+  margin: 17% -131% 0 66%;
   padding: 50px;
   width: 500px;
   height: 86vh;
   align-items: center;
-  box-shadow: 0px 4px 10px 10px rgba(15, 52, 6, 0.42);
+  box-shadow: 0px 4px 10px 10px rgb(15 52 6 / 42%);
 }
 span {
   padding: 0 10px;
@@ -202,7 +202,7 @@ body {
   background: #086a52; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border: 0;
   padding: 10px;
-  margin: 10% 0 0 35%;
+  margin: 10% 1% 0 0%;
   width: 120px;
   font-size: 20px;
   border-radius: 4px;
@@ -291,6 +291,13 @@ a:hover {
   opacity: 50%;
   text-decoration: none;
 }
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -8px;
+  margin-left: -9.9vh;
+  margin-top: -10vh;
+}
 
 @media (max-width: 844px) {
   body {
@@ -298,8 +305,8 @@ a:hover {
   }
   .formCadastro {
     width: 336px;
-    height: 92vh;
-    margin: -32% -8% 0 -3px;
+    height: 85vh;
+    margin: -32% -8% 0 10px;
     padding: 50px;
   }
 
@@ -324,11 +331,12 @@ a:hover {
     padding: 10px;
     height: 50px;
     width: 110px;
+    margin: 6px -40px 0px 0px;
   }
   .logo img {
     width: 200px;
     height: 200px;
-    margin: -3% 0% 5vh 3vh;
+    margin: -5% -41% 5vh 3vh;
   }
   .logo {
     margin: 0;
